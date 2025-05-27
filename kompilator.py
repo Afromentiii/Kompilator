@@ -79,3 +79,6 @@ while True:
     if not tok: 
         break      # No more input
     print(tok)
+    
+
+parser = yacc.yacc()
