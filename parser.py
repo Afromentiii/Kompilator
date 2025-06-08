@@ -25,11 +25,11 @@ def p_wyrazenie(p):
     '''wyrazenie : CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
                  | WYPISZ lista_id SREDNIK
                  | WCZYTAJ lista_id SREDNIK
-                 | JEZELI LEWY_NAWIAS PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+                 | JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
                  
                  '''
-    if len(p) == 7:
-        p[0] = ['jezeli', p[5]]  # <-- lista, nie string!
+    if len(p) == 8:
+        p[0] = [p[3]] + ['jezeli', p[6]]
     if len(p) == 6:
         nazwa = p[2]
         if nazwa in variables:
@@ -41,6 +41,15 @@ def p_wyrazenie(p):
     
     if len(p) == 4:
         p[0] = f"{p[1]} {', '.join(p[2])}"
+
+def p_warunki_logiczne(p):
+    '''warunki_logiczne : warunki_logiczne KONIUNKCJA term
+                        | warunki_logiczne ALTERNATYWA term
+                        | term'''
+    if len(p) == 2:
+        p[0] = p[1]
+    else:
+        p[0] = p[1] + ' ' + p[2] + ' '+ p[3]
 
 def p_wyrazenie_arytmetyczne(p):
     '''wyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term
@@ -81,6 +90,26 @@ def p_lista_id(p):
             raise SyntaxError
         p[0] = [p[1]]
 
+def p_wyrazenie_jezeli_error(p):
+    '''wyrazenie : JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
+                 | JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
+                 | JEZELI LEWY_NAWIAS warunki_logiczne error
+                 | JEZELI LEWY_NAWIAS error
+                 | JEZELI error'''
+
+    if len(p) == 8:
+        print(f"Błąd składni: po 'wyrażeniach' brakuje PRAWEJ_KLAMRY, linia: {p.lineno(1)}")
+    elif len(p) == 6:
+        print(f"Błąd składni: po 'prawym nawiasie' brakuje LEWEJ_KLAMRY, linia: {p.lineno(1)}")
+    elif len(p) == 5:
+        print(f"Błąd składni: po 'warunkach logicznych' brakuje PRAWEGO_NAWIASU, linia: {p.lineno(1)}")
+    elif len(p) == 4:
+        print(f"Błąd składni: po 'lewym nawiasie' brakuje WARUNKÓW_LOGICZNYCH, linia: {p.lineno(1)}")
+    elif len(p) == 2:
+        print(f"Błąd składni: po 'JEŻELI' brakuje LEWEGO_NAWIASU, linia: {p.lineno(1)}")
+
+    sys.exit(1)
+        
 
 def p_wyrazenie_wypisz_error(p):
     '''wyrazenie : WYPISZ lista_id error
@@ -113,7 +142,10 @@ def p_epsilon(p):
     p[0] = []
 
 def p_error(p):
-    pass        
+    if p:
+        print(f"Błąd składniowy przy tokenie '{p.value}', typ: {p.type}, linia: {p.lineno}")
+    else:
+        print("Błąd składniowy: nieoczekiwany koniec wejścia")
 
 
 parser = yacc.yacc()

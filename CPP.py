@@ -27,23 +27,7 @@ class CPP:
                     self.code_lines.append(self.create_cout(tokens))
                 elif tokens[0] == "wczytaj_z_klawiatury":
                     self.code_lines.append(self.create_cin(tokens))
-
-    def ast_inside_travelsal(self, AST):
-         for symbol in AST[1]:
-              tokens = symbol.split()
-              if (tokens[0] == "calkowita"):
-                   line = self.create_int(tokens)
-                   self.code_lines.append(line)
-              if(tokens[0] == "wypisz"):
-                   line = self.create_cout(tokens)
-                   self.code_lines.append(line)
-              if(tokens[0] == "wczytaj_z_klawiatury"):
-                   line = self.create_cin(tokens)
-                   self.code_lines.append(line)
-              if(tokens[0] == "jezeli"):
-                  continue
-                                     
-                   
+               
     def create_cout(self, tokens):
         # print(tokens)
         args = tokens[1:]

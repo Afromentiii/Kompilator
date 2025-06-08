@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ALTERNATYWA CALKOWITA DOPOKI DZIELENIE GLOWNY ID JEZELI KOMENTARZ_JEDNOLINIJKOWY KOMENTARZ_WIELOLINIJKOWY KONIUNKCJA LEWA_KLAMRA LEWY_NAWIAS LICZBA MINUS MNIEJSZE MNIEJSZE_ROWNE NEGACJA PLUS PRAWA_KLAMRA PRAWY_NAWIAS PRZECINEK PRZYPISANIE RAZY ROWNE SREDNIK WCZYTAJ WIEKSZE WIEKSZE_ROWNE WYPISZprogram : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA wyrazenia : wyrazenia wyrazenie\n                 | epsilonwyrazenie : CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK\n                 | WYPISZ lista_id SREDNIK\n                 | WCZYTAJ lista_id SREDNIK\n                 | JEZELI LEWY_NAWIAS PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA\n                 \n                 wyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term\n                              | wyrazenie_arytmetyczne MINUS term\n                              | wyrazenie_arytmetyczne RAZY term\n                              | wyrazenie_arytmetyczne DZIELENIE term\n                              | termterm : ID\n            | LICZBAlista_id : lista_id PRZECINEK ID\n                | IDwyrazenie : WYPISZ lista_id error\n                 | WYPISZ error wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA error\n                 | CALKOWITA ID PRZYPISANIE error\n                 | CALKOWITA ID error\n                 | CALKOWITA error epsilon :'
+_lr_signature = 'ALTERNATYWA CALKOWITA DOPOKI DZIELENIE GLOWNY ID JEZELI KOMENTARZ_JEDNOLINIJKOWY KOMENTARZ_WIELOLINIJKOWY KONIUNKCJA LEWA_KLAMRA LEWY_NAWIAS LICZBA MINUS MNIEJSZE MNIEJSZE_ROWNE NEGACJA PLUS PRAWA_KLAMRA PRAWY_NAWIAS PRZECINEK PRZYPISANIE RAZY ROWNE SREDNIK WCZYTAJ WIEKSZE WIEKSZE_ROWNE WYPISZprogram : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA wyrazenia : wyrazenia wyrazenie\n                 | epsilonwyrazenie : CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK\n                 | WYPISZ lista_id SREDNIK\n                 | WCZYTAJ lista_id SREDNIK\n                 | JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA\n                 \n                 warunki_logiczne : warunki_logiczne KONIUNKCJA term\n                        | warunki_logiczne ALTERNATYWA term\n                        | termwyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term\n                              | wyrazenie_arytmetyczne MINUS term\n                              | wyrazenie_arytmetyczne RAZY term\n                              | wyrazenie_arytmetyczne DZIELENIE term\n                              | termterm : ID\n            | LICZBAlista_id : lista_id PRZECINEK ID\n                | IDwyrazenie : JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error\n                 | JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error\n                 | JEZELI LEWY_NAWIAS warunki_logiczne error\n                 | JEZELI LEWY_NAWIAS error\n                 | JEZELI errorwyrazenie : WYPISZ lista_id error\n                 | WYPISZ error wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA error\n                 | CALKOWITA ID PRZYPISANIE error\n                 | CALKOWITA ID error\n                 | CALKOWITA error epsilon :'
     
-_lr_action_items = {'GLOWNY':([0,],[2,]),'$end':([1,6,],[0,-1,]),'LEWA_KLAMRA':([2,25,],[3,32,]),'PRAWA_KLAMRA':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,6,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,45,-7,]),'CALKOWITA':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,8,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,8,-7,]),'WYPISZ':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,9,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,9,-7,]),'WCZYTAJ':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,10,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,10,-7,]),'JEZELI':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,11,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,11,-7,]),'ID':([8,9,10,19,23,34,35,36,37,],[12,16,16,26,31,26,26,26,26,]),'error':([8,9,12,14,16,19,28,31,],[13,15,20,22,-16,29,38,-15,]),'LEWY_NAWIAS':([11,],[18,]),'PRZYPISANIE':([12,],[19,]),'SREDNIK':([14,16,17,26,27,28,30,31,40,41,42,43,44,],[21,-16,24,-13,33,-14,-12,-15,-8,-14,-9,-10,-11,]),'PRZECINEK':([14,16,17,31,],[23,-16,23,-15,]),'PRAWY_NAWIAS':([18,],[25,]),'LICZBA':([19,34,35,36,37,],[28,41,41,41,41,]),'PLUS':([26,27,28,30,40,41,42,43,44,],[-13,34,-14,-12,-8,-14,-9,-10,-11,]),'MINUS':([26,27,28,30,40,41,42,43,44,],[-13,35,-14,-12,-8,-14,-9,-10,-11,]),'RAZY':([26,27,28,30,40,41,42,43,44,],[-13,36,-14,-12,-8,-14,-9,-10,-11,]),'DZIELENIE':([26,27,28,30,40,41,42,43,44,],[-13,37,-14,-12,-8,-14,-9,-10,-11,]),}
+_lr_action_items = {'GLOWNY':([0,],[2,]),'$end':([1,6,],[0,-1,]),'LEWA_KLAMRA':([2,36,],[3,46,]),'PRAWA_KLAMRA':([3,4,5,7,13,15,19,21,22,23,25,27,33,37,40,45,46,47,54,55,56,],[-31,6,-3,-2,-30,-26,-24,-29,-5,-25,-6,-23,-28,-22,-4,-27,-31,-21,55,-7,-20,]),'CALKOWITA':([3,4,5,7,13,15,19,21,22,23,25,27,33,37,40,45,46,47,54,55,56,],[-31,8,-3,-2,-30,-26,-24,-29,-5,-25,-6,-23,-28,-22,-4,-27,-31,-21,8,-7,-20,]),'WYPISZ':([3,4,5,7,13,15,19,21,22,23,25,27,33,37,40,45,46,47,54,55,56,],[-31,9,-3,-2,-30,-26,-24,-29,-5,-25,-6,-23,-28,-22,-4,-27,-31,-21,9,-7,-20,]),'WCZYTAJ':([3,4,5,7,13,15,19,21,22,23,25,27,33,37,40,45,46,47,54,55,56,],[-31,10,-3,-2,-30,-26,-24,-29,-5,-25,-6,-23,-28,-22,-4,-27,-31,-21,10,-7,-20,]),'JEZELI':([3,4,5,7,13,15,19,21,22,23,25,27,33,37,40,45,46,47,54,55,56,],[-31,11,-3,-2,-30,-26,-24,-29,-5,-25,-6,-23,-28,-22,-4,-27,-31,-21,11,-7,-20,]),'error':([5,7,8,9,11,12,13,14,15,16,18,19,20,21,22,23,25,26,27,28,29,30,32,33,35,36,37,40,45,46,47,48,49,54,55,56,],[-3,-2,13,15,19,21,-30,23,-26,-19,27,-24,33,-29,-5,-25,-6,37,-23,-10,-16,-17,45,-28,-18,47,-22,-4,-27,-31,-21,-8,-9,56,-7,-20,]),'ID':([8,9,10,18,20,24,38,39,41,42,43,44,],[12,16,16,29,29,35,29,29,29,29,29,29,]),'LEWY_NAWIAS':([11,],[18,]),'PRZYPISANIE':([12,],[20,]),'SREDNIK':([14,16,17,29,30,31,32,34,35,50,51,52,53,],[22,-19,25,-16,-17,40,-17,-15,-18,-11,-12,-13,-14,]),'PRZECINEK':([14,16,17,35,],[24,-19,24,-18,]),'LICZBA':([18,20,38,39,41,42,43,44,],[30,32,30,30,30,30,30,30,]),'PRAWY_NAWIAS':([26,28,29,30,48,49,],[36,-10,-16,-17,-8,-9,]),'KONIUNKCJA':([26,28,29,30,48,49,],[38,-10,-16,-17,-8,-9,]),'ALTERNATYWA':([26,28,29,30,48,49,],[39,-10,-16,-17,-8,-9,]),'PLUS':([29,30,31,32,34,50,51,52,53,],[-16,-17,41,-17,-15,-11,-12,-13,-14,]),'MINUS':([29,30,31,32,34,50,51,52,53,],[-16,-17,42,-17,-15,-11,-12,-13,-14,]),'RAZY':([29,30,31,32,34,50,51,52,53,],[-16,-17,43,-17,-15,-11,-12,-13,-14,]),'DZIELENIE':([29,30,31,32,34,50,51,52,53,],[-16,-17,44,-17,-15,-11,-12,-13,-14,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'wyrazenia':([3,32,],[4,39,]),'epsilon':([3,32,],[5,5,]),'wyrazenie':([4,39,],[7,7,]),'lista_id':([9,10,],[14,17,]),'wyrazenie_arytmetyczne':([19,],[27,]),'term':([19,34,35,36,37,],[30,40,42,43,44,]),}
+_lr_goto_items = {'program':([0,],[1,]),'wyrazenia':([3,46,],[4,54,]),'epsilon':([3,46,],[5,5,]),'wyrazenie':([4,54,],[7,7,]),'lista_id':([9,10,],[14,17,]),'warunki_logiczne':([18,],[26,]),'term':([18,20,38,39,41,42,43,44,],[28,34,48,49,50,51,52,53,]),'wyrazenie_arytmetyczne':([20,],[31,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -33,21 +33,29 @@ _lr_productions = [
   ('wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK','wyrazenie',5,'p_wyrazenie','parser.py',25),
   ('wyrazenie -> WYPISZ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',26),
   ('wyrazenie -> WCZYTAJ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',27),
-  ('wyrazenie -> JEZELI LEWY_NAWIAS PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA','wyrazenie',6,'p_wyrazenie','parser.py',28),
-  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',47),
-  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',48),
-  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',49),
-  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',50),
-  ('wyrazenie_arytmetyczne -> term','wyrazenie_arytmetyczne',1,'p_wyrazenie_arytmetyczne','parser.py',51),
-  ('term -> ID','term',1,'p_term','parser.py',62),
-  ('term -> LICZBA','term',1,'p_term','parser.py',63),
-  ('lista_id -> lista_id PRZECINEK ID','lista_id',3,'p_lista_id','parser.py',72),
-  ('lista_id -> ID','lista_id',1,'p_lista_id','parser.py',73),
-  ('wyrazenie -> WYPISZ lista_id error','wyrazenie',3,'p_wyrazenie_wypisz_error','parser.py',87),
-  ('wyrazenie -> WYPISZ error','wyrazenie',2,'p_wyrazenie_wypisz_error','parser.py',88),
-  ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error','wyrazenie',5,'p_wyrazenie_calkowita_error','parser.py',96),
-  ('wyrazenie -> CALKOWITA ID PRZYPISANIE error','wyrazenie',4,'p_wyrazenie_calkowita_error','parser.py',97),
-  ('wyrazenie -> CALKOWITA ID error','wyrazenie',3,'p_wyrazenie_calkowita_error','parser.py',98),
-  ('wyrazenie -> CALKOWITA error','wyrazenie',2,'p_wyrazenie_calkowita_error','parser.py',99),
-  ('epsilon -> <empty>','epsilon',0,'p_epsilon','parser.py',113),
+  ('wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA','wyrazenie',7,'p_wyrazenie','parser.py',28),
+  ('warunki_logiczne -> warunki_logiczne KONIUNKCJA term','warunki_logiczne',3,'p_warunki_logiczne','parser.py',46),
+  ('warunki_logiczne -> warunki_logiczne ALTERNATYWA term','warunki_logiczne',3,'p_warunki_logiczne','parser.py',47),
+  ('warunki_logiczne -> term','warunki_logiczne',1,'p_warunki_logiczne','parser.py',48),
+  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',55),
+  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',56),
+  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',57),
+  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',58),
+  ('wyrazenie_arytmetyczne -> term','wyrazenie_arytmetyczne',1,'p_wyrazenie_arytmetyczne','parser.py',59),
+  ('term -> ID','term',1,'p_term','parser.py',70),
+  ('term -> LICZBA','term',1,'p_term','parser.py',71),
+  ('lista_id -> lista_id PRZECINEK ID','lista_id',3,'p_lista_id','parser.py',80),
+  ('lista_id -> ID','lista_id',1,'p_lista_id','parser.py',81),
+  ('wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error','wyrazenie',7,'p_wyrazenie_jezeli_error','parser.py',94),
+  ('wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error','wyrazenie',5,'p_wyrazenie_jezeli_error','parser.py',95),
+  ('wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error','wyrazenie',4,'p_wyrazenie_jezeli_error','parser.py',96),
+  ('wyrazenie -> JEZELI LEWY_NAWIAS error','wyrazenie',3,'p_wyrazenie_jezeli_error','parser.py',97),
+  ('wyrazenie -> JEZELI error','wyrazenie',2,'p_wyrazenie_jezeli_error','parser.py',98),
+  ('wyrazenie -> WYPISZ lista_id error','wyrazenie',3,'p_wyrazenie_wypisz_error','parser.py',115),
+  ('wyrazenie -> WYPISZ error','wyrazenie',2,'p_wyrazenie_wypisz_error','parser.py',116),
+  ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error','wyrazenie',5,'p_wyrazenie_calkowita_error','parser.py',124),
+  ('wyrazenie -> CALKOWITA ID PRZYPISANIE error','wyrazenie',4,'p_wyrazenie_calkowita_error','parser.py',125),
+  ('wyrazenie -> CALKOWITA ID error','wyrazenie',3,'p_wyrazenie_calkowita_error','parser.py',126),
+  ('wyrazenie -> CALKOWITA error','wyrazenie',2,'p_wyrazenie_calkowita_error','parser.py',127),
+  ('epsilon -> <empty>','epsilon',0,'p_epsilon','parser.py',141),
 ]

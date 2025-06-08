@@ -1,6 +1,9 @@
 import ply.lex as lex
 import sys
 precedence = (
+    ('left', 'ALTERNATYWA'),      
+    ('left', 'KONIUNKCJA'),      
+    ('right', 'NEGACJA'),         
     ('left', 'PLUS', 'MINUS'),
     ('left', 'RAZY', 'DZIELENIE'),
 )
