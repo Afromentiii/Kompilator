@@ -9,7 +9,7 @@ wypisz e, x;
 
 
 
-jezeli(e lub 5) 
+jezeli(e lub 5 oraz nie 5) 
 {
     calkowita z := 111;
     wypisz z;

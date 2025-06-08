@@ -65,16 +65,21 @@ def p_wyrazenie_arytmetyczne(p):
             raise SyntaxError
         else:
             p[0] = p[1] + p[2] + p[3]
-    
+
 def p_term(p):
     '''term : ID
-            | LICZBA'''
-    if isinstance(p[1], str): 
-        if p.slice[1].type == 'ID':
+            | LICZBA
+            | NEGACJA term'''
+    if len(p) == 2:  # term : ID lub LICZBA
+        if isinstance(p[1], str) and p.slice[1].type == 'ID':
             if p[1] not in variables:
                 print(f"Błąd semantyczny: zmienna '{p[1]}' nie została zadeklarowana, linia: {p.lineno(1)}")
                 raise SyntaxError
-    p[0] = p[1]
+        p[0] = p[1]
+    else:
+        # len(p) == 3, p[1] == NEGACJA, p[2] == term
+        p[0] = p[1] + " " +p[2]
+
 
 def p_lista_id(p):
     '''lista_id : lista_id PRZECINEK ID
