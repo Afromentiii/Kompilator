@@ -1,4 +1,9 @@
 import ply.lex as lex
+import sys
+precedence = (
+    ('left', 'PLUS', 'MINUS'),
+    ('left', 'RAZY', 'DZIELENIE'),
+)
 
 reserved = {
     'jezeli': 'JEZELI',
@@ -39,7 +44,7 @@ tokens = [
 t_PLUS = r'\+'
 t_MINUS = r'-'
 t_RAZY = r'\*'
-t_DZIELENIE = r':'
+t_DZIELENIE = r'/'
 t_ROWNE = r'='
 t_WIEKSZE_ROWNE = r'>='
 t_WIEKSZE = r'>'
@@ -54,7 +59,7 @@ t_SREDNIK = r';'
 t_PRZECINEK = r','
 
 def t_LICZBA(t):
-    r'\d+'
+    r'-?\d+'
     return t
 
 def t_ID(t):
@@ -77,6 +82,7 @@ def t_newline(t):
 
 def t_error(t):
     print(f"Nieprawidłowy znak: {t.value[0]} w linii {t.lineno}")
+    sys.exit(1)
 
 t_ignore  = ' \t'
 

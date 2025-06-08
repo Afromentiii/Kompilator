@@ -1,8 +1,8 @@
 glowny 
 {
-calkowita e := 5;
+calkowita e := -5 + -5 : 5;
 wypisz e;
-calkowita x := 1;
+calkowita x := e;
 wypisz e, x;
 wczytaj_z_klawiatury e,x;
 wypisz e, x;

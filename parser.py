@@ -6,6 +6,7 @@ from CPP import CPP
 from lexer import tokens
 from lexer import lexer
 
+
 variables = []
 
 def p_program(p):
@@ -21,7 +22,7 @@ def p_wyrazenia(p):
         p[0] = []
     
 def p_wyrazenie(p):
-    '''wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA SREDNIK
+    '''wyrazenie : CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
                  | WYPISZ lista_id SREDNIK
                  | WCZYTAJ lista_id SREDNIK'''
     if len(p) == 6:
@@ -37,6 +38,26 @@ def p_wyrazenie(p):
         if p[1] == "wypisz" or "wczytaj_z_klawiatury":
             p[0] = f"{p[1]} {', '.join(p[2])}"
 
+def p_wyrazenie_arytmetyczne(p):
+    '''wyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term
+                              | wyrazenie_arytmetyczne MINUS term
+                              | wyrazenie_arytmetyczne RAZY term
+                              | wyrazenie_arytmetyczne DZIELENIE term
+                              | term'''
+    if len(p) == 2:
+        if p[0] in variables:
+            p[0] = p[1]
+    else:
+        p[0] = p[1] + p[2] + p[3]  # np. ('+', 'x', '2')
+    
+def p_term(p):
+    '''term : ID
+              | LICZBA  '''
+    p[0] = p[1]
+
+def p_term_error(p):
+    if len(p[0]) == 1:
+        print(f"Błąd składni: po 'wypisz' brakuje nazwy zmiennej, linia: {p.lineno(1)}")
 
 def p_lista_id(p):
     '''lista_id : lista_id PRZECINEK ID
@@ -88,20 +109,33 @@ def p_error(p):
 
 parser = yacc.yacc()
 
-with open("program.txt", "r", encoding="utf-8") as f:
-    data = f.read()
+def main():
+    if len(sys.argv) < 2:
+        print("Użycie: python parser.py sciezka/do/pliku.txt")
+        sys.exit(1)
+
+    file_path = sys.argv[1]
+
+    if not os.path.isfile(file_path):
+        print(f"Plik '{file_path}' nie istnieje.")
+        sys.exit(1)
+
+    with open(file_path, "r", encoding="utf-8") as f:
+        data = f.read()
+    
     lexer.input(data)
-    tok = lexer.token()
+    # odkomentuj poniżej, jeśli chcesz zobaczyć tokeny
     # while True:
     #     tok = lexer.token()
     #     if not tok:
     #         break
     #     print(tok)
+    
     AST = parser.parse(data)
     print(AST)
-    if AST != None:
+    if AST is not None:
         for symbol in AST[1]:
-            if symbol == None:
+            if symbol is None:
                 sys.exit(0)
 
         cpp_generator = CPP(AST)
@@ -109,3 +143,5 @@ with open("program.txt", "r", encoding="utf-8") as f:
         cpp_generator.save(cpp_file)
         # cpp_generator.compile("output.cpp")
 
+if __name__ == "__main__":
+    main()
