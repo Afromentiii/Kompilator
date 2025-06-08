@@ -13,8 +13,23 @@ class CPP:
         self.code_lines.append("using namespace std; \n")
         self.code_lines.append("int main() { \n")
     
-    def ast_travelsal(self):
-         for symbol in self.AST[1]:
+    def ast_travelsal(self, AST):
+        for symbol in AST[1]:
+            if isinstance(symbol, list) and symbol[0] == "jezeli":
+                self.code_lines.append("if (true) {\n")  
+                self.ast_travelsal(('blok', symbol[1]))
+                self.code_lines.append("}\n")
+            elif isinstance(symbol, str):
+                tokens = symbol.split()
+                if tokens[0] == "calkowita":
+                    self.code_lines.append(self.create_int(tokens))
+                elif tokens[0] == "wypisz":
+                    self.code_lines.append(self.create_cout(tokens))
+                elif tokens[0] == "wczytaj_z_klawiatury":
+                    self.code_lines.append(self.create_cin(tokens))
+
+    def ast_inside_travelsal(self, AST):
+         for symbol in AST[1]:
               tokens = symbol.split()
               if (tokens[0] == "calkowita"):
                    line = self.create_int(tokens)
@@ -25,6 +40,9 @@ class CPP:
               if(tokens[0] == "wczytaj_z_klawiatury"):
                    line = self.create_cin(tokens)
                    self.code_lines.append(line)
+              if(tokens[0] == "jezeli"):
+                  continue
+                                     
                    
     def create_cout(self, tokens):
         # print(tokens)
@@ -39,6 +57,11 @@ class CPP:
         args_clean = [token.replace(',', '') for token in args]
         cpp_cout_value = " >> ".join(args_clean)
         return "cin >> " + cpp_cout_value + ";\n"
+    
+    # def generate_if(self, symbol):
+    #      self.code_lines.append("if () {\n")
+    #      self.ast_travelsal(symbol[1])
+    #      self.code_lines.append("}\n")
 
     def create_int(self, tokens):
         cpp_int = "int"
@@ -48,7 +71,7 @@ class CPP:
 
     def create_cpp_file(self):
          self.create_main()
-         self.ast_travelsal()
+         self.ast_travelsal(self.AST)
          self.code_lines.append("return 0;")
          self.code_lines.append("\n}")
         

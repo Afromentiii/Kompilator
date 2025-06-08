@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ALTERNATYWA CALKOWITA DOPOKI DZIELENIE GLOWNY ID JEZELI KOMENTARZ_JEDNOLINIJKOWY KOMENTARZ_WIELOLINIJKOWY KONIUNKCJA LEWA_KLAMRA LEWY_NAWIAS LICZBA MINUS MNIEJSZE MNIEJSZE_ROWNE NEGACJA PLUS PRAWA_KLAMRA PRAWY_NAWIAS PRZECINEK PRZYPISANIE RAZY ROWNE SREDNIK WCZYTAJ WIEKSZE WIEKSZE_ROWNE WYPISZprogram : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA wyrazenia : wyrazenia wyrazenie\n                 | epsilonwyrazenie : CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK\n                 | WYPISZ lista_id SREDNIK\n                 | WCZYTAJ lista_id SREDNIKwyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term\n                              | wyrazenie_arytmetyczne MINUS term\n                              | wyrazenie_arytmetyczne RAZY term\n                              | wyrazenie_arytmetyczne DZIELENIE term\n                              | termterm : ID\n              | LICZBA  lista_id : lista_id PRZECINEK ID\n                | IDwyrazenie : WYPISZ lista_id error\n                 | WYPISZ error wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA error\n                 | CALKOWITA ID PRZYPISANIE error\n                 | CALKOWITA ID error\n                 | CALKOWITA error epsilon :'
+_lr_signature = 'ALTERNATYWA CALKOWITA DOPOKI DZIELENIE GLOWNY ID JEZELI KOMENTARZ_JEDNOLINIJKOWY KOMENTARZ_WIELOLINIJKOWY KONIUNKCJA LEWA_KLAMRA LEWY_NAWIAS LICZBA MINUS MNIEJSZE MNIEJSZE_ROWNE NEGACJA PLUS PRAWA_KLAMRA PRAWY_NAWIAS PRZECINEK PRZYPISANIE RAZY ROWNE SREDNIK WCZYTAJ WIEKSZE WIEKSZE_ROWNE WYPISZprogram : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA wyrazenia : wyrazenia wyrazenie\n                 | epsilonwyrazenie : CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK\n                 | WYPISZ lista_id SREDNIK\n                 | WCZYTAJ lista_id SREDNIK\n                 | JEZELI LEWY_NAWIAS PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA\n                 \n                 wyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term\n                              | wyrazenie_arytmetyczne MINUS term\n                              | wyrazenie_arytmetyczne RAZY term\n                              | wyrazenie_arytmetyczne DZIELENIE term\n                              | termterm : ID\n            | LICZBAlista_id : lista_id PRZECINEK ID\n                | IDwyrazenie : WYPISZ lista_id error\n                 | WYPISZ error wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA error\n                 | CALKOWITA ID PRZYPISANIE error\n                 | CALKOWITA ID error\n                 | CALKOWITA error epsilon :'
     
-_lr_action_items = {'GLOWNY':([0,],[2,]),'$end':([1,6,],[0,-1,]),'LEWA_KLAMRA':([2,],[3,]),'PRAWA_KLAMRA':([3,4,5,7,12,14,18,19,20,22,26,29,34,],[-22,6,-3,-2,-21,-17,-20,-5,-16,-6,-19,-4,-18,]),'CALKOWITA':([3,4,5,7,12,14,18,19,20,22,26,29,34,],[-22,8,-3,-2,-21,-17,-20,-5,-16,-6,-19,-4,-18,]),'WYPISZ':([3,4,5,7,12,14,18,19,20,22,26,29,34,],[-22,9,-3,-2,-21,-17,-20,-5,-16,-6,-19,-4,-18,]),'WCZYTAJ':([3,4,5,7,12,14,18,19,20,22,26,29,34,],[-22,10,-3,-2,-21,-17,-20,-5,-16,-6,-19,-4,-18,]),'ID':([8,9,10,17,21,30,31,32,33,],[11,15,15,23,28,23,23,23,23,]),'error':([8,9,11,13,15,17,25,28,],[12,14,18,20,-15,26,34,-14,]),'PRZYPISANIE':([11,],[17,]),'SREDNIK':([13,15,16,23,24,25,27,28,35,36,37,38,39,],[19,-15,22,-12,29,-13,-11,-14,-7,-13,-8,-9,-10,]),'PRZECINEK':([13,15,16,28,],[21,-15,21,-14,]),'LICZBA':([17,30,31,32,33,],[25,36,36,36,36,]),'PLUS':([23,24,25,27,35,36,37,38,39,],[-12,30,-13,-11,-7,-13,-8,-9,-10,]),'MINUS':([23,24,25,27,35,36,37,38,39,],[-12,31,-13,-11,-7,-13,-8,-9,-10,]),'RAZY':([23,24,25,27,35,36,37,38,39,],[-12,32,-13,-11,-7,-13,-8,-9,-10,]),'DZIELENIE':([23,24,25,27,35,36,37,38,39,],[-12,33,-13,-11,-7,-13,-8,-9,-10,]),}
+_lr_action_items = {'GLOWNY':([0,],[2,]),'$end':([1,6,],[0,-1,]),'LEWA_KLAMRA':([2,25,],[3,32,]),'PRAWA_KLAMRA':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,6,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,45,-7,]),'CALKOWITA':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,8,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,8,-7,]),'WYPISZ':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,9,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,9,-7,]),'WCZYTAJ':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,10,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,10,-7,]),'JEZELI':([3,4,5,7,13,15,20,21,22,24,29,32,33,38,39,45,],[-23,11,-3,-2,-22,-18,-21,-5,-17,-6,-20,-23,-4,-19,11,-7,]),'ID':([8,9,10,19,23,34,35,36,37,],[12,16,16,26,31,26,26,26,26,]),'error':([8,9,12,14,16,19,28,31,],[13,15,20,22,-16,29,38,-15,]),'LEWY_NAWIAS':([11,],[18,]),'PRZYPISANIE':([12,],[19,]),'SREDNIK':([14,16,17,26,27,28,30,31,40,41,42,43,44,],[21,-16,24,-13,33,-14,-12,-15,-8,-14,-9,-10,-11,]),'PRZECINEK':([14,16,17,31,],[23,-16,23,-15,]),'PRAWY_NAWIAS':([18,],[25,]),'LICZBA':([19,34,35,36,37,],[28,41,41,41,41,]),'PLUS':([26,27,28,30,40,41,42,43,44,],[-13,34,-14,-12,-8,-14,-9,-10,-11,]),'MINUS':([26,27,28,30,40,41,42,43,44,],[-13,35,-14,-12,-8,-14,-9,-10,-11,]),'RAZY':([26,27,28,30,40,41,42,43,44,],[-13,36,-14,-12,-8,-14,-9,-10,-11,]),'DZIELENIE':([26,27,28,30,40,41,42,43,44,],[-13,37,-14,-12,-8,-14,-9,-10,-11,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'wyrazenia':([3,],[4,]),'epsilon':([3,],[5,]),'wyrazenie':([4,],[7,]),'lista_id':([9,10,],[13,16,]),'wyrazenie_arytmetyczne':([17,],[24,]),'term':([17,30,31,32,33,],[27,35,37,38,39,]),}
+_lr_goto_items = {'program':([0,],[1,]),'wyrazenia':([3,32,],[4,39,]),'epsilon':([3,32,],[5,5,]),'wyrazenie':([4,39,],[7,7,]),'lista_id':([9,10,],[14,17,]),'wyrazenie_arytmetyczne':([19,],[27,]),'term':([19,34,35,36,37,],[30,40,42,43,44,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,26 +27,27 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> program","S'",1,None,None,None),
-  ('program -> GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA','program',4,'p_program','parser.py',12),
-  ('wyrazenia -> wyrazenia wyrazenie','wyrazenia',2,'p_wyrazenia','parser.py',16),
-  ('wyrazenia -> epsilon','wyrazenia',1,'p_wyrazenia','parser.py',17),
-  ('wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK','wyrazenie',5,'p_wyrazenie','parser.py',24),
-  ('wyrazenie -> WYPISZ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',25),
-  ('wyrazenie -> WCZYTAJ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',26),
-  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',41),
-  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',42),
-  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',43),
-  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',44),
-  ('wyrazenie_arytmetyczne -> term','wyrazenie_arytmetyczne',1,'p_wyrazenie_arytmetyczne','parser.py',45),
-  ('term -> ID','term',1,'p_term','parser.py',56),
-  ('term -> LICZBA','term',1,'p_term','parser.py',57),
-  ('lista_id -> lista_id PRZECINEK ID','lista_id',3,'p_lista_id','parser.py',61),
-  ('lista_id -> ID','lista_id',1,'p_lista_id','parser.py',62),
-  ('wyrazenie -> WYPISZ lista_id error','wyrazenie',3,'p_wyrazenie_wypisz_error','parser.py',76),
-  ('wyrazenie -> WYPISZ error','wyrazenie',2,'p_wyrazenie_wypisz_error','parser.py',77),
-  ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error','wyrazenie',5,'p_wyrazenie_calkowita_error','parser.py',85),
-  ('wyrazenie -> CALKOWITA ID PRZYPISANIE error','wyrazenie',4,'p_wyrazenie_calkowita_error','parser.py',86),
-  ('wyrazenie -> CALKOWITA ID error','wyrazenie',3,'p_wyrazenie_calkowita_error','parser.py',87),
-  ('wyrazenie -> CALKOWITA error','wyrazenie',2,'p_wyrazenie_calkowita_error','parser.py',88),
-  ('epsilon -> <empty>','epsilon',0,'p_epsilon','parser.py',101),
+  ('program -> GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA','program',4,'p_program','parser.py',13),
+  ('wyrazenia -> wyrazenia wyrazenie','wyrazenia',2,'p_wyrazenia','parser.py',17),
+  ('wyrazenia -> epsilon','wyrazenia',1,'p_wyrazenia','parser.py',18),
+  ('wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK','wyrazenie',5,'p_wyrazenie','parser.py',25),
+  ('wyrazenie -> WYPISZ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',26),
+  ('wyrazenie -> WCZYTAJ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',27),
+  ('wyrazenie -> JEZELI LEWY_NAWIAS PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA','wyrazenie',6,'p_wyrazenie','parser.py',28),
+  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',47),
+  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',48),
+  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',49),
+  ('wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term','wyrazenie_arytmetyczne',3,'p_wyrazenie_arytmetyczne','parser.py',50),
+  ('wyrazenie_arytmetyczne -> term','wyrazenie_arytmetyczne',1,'p_wyrazenie_arytmetyczne','parser.py',51),
+  ('term -> ID','term',1,'p_term','parser.py',62),
+  ('term -> LICZBA','term',1,'p_term','parser.py',63),
+  ('lista_id -> lista_id PRZECINEK ID','lista_id',3,'p_lista_id','parser.py',72),
+  ('lista_id -> ID','lista_id',1,'p_lista_id','parser.py',73),
+  ('wyrazenie -> WYPISZ lista_id error','wyrazenie',3,'p_wyrazenie_wypisz_error','parser.py',87),
+  ('wyrazenie -> WYPISZ error','wyrazenie',2,'p_wyrazenie_wypisz_error','parser.py',88),
+  ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error','wyrazenie',5,'p_wyrazenie_calkowita_error','parser.py',96),
+  ('wyrazenie -> CALKOWITA ID PRZYPISANIE error','wyrazenie',4,'p_wyrazenie_calkowita_error','parser.py',97),
+  ('wyrazenie -> CALKOWITA ID error','wyrazenie',3,'p_wyrazenie_calkowita_error','parser.py',98),
+  ('wyrazenie -> CALKOWITA error','wyrazenie',2,'p_wyrazenie_calkowita_error','parser.py',99),
+  ('epsilon -> <empty>','epsilon',0,'p_epsilon','parser.py',113),
 ]

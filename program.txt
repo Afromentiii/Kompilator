@@ -1,9 +1,17 @@
 glowny 
 {
-calkowita e := -5 + -5 : 5;
+calkowita e := 111;
 wypisz e;
 calkowita x := e;
 wypisz e, x;
 wczytaj_z_klawiatury e,x;
 wypisz e, x;
+
+
+
+jezeli()
+{
+    calkowita z := 111;
+    wypisz z;
+}
 }

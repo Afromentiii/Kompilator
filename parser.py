@@ -24,7 +24,12 @@ def p_wyrazenia(p):
 def p_wyrazenie(p):
     '''wyrazenie : CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
                  | WYPISZ lista_id SREDNIK
-                 | WCZYTAJ lista_id SREDNIK'''
+                 | WCZYTAJ lista_id SREDNIK
+                 | JEZELI LEWY_NAWIAS PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+                 
+                 '''
+    if len(p) == 7:
+        p[0] = ['jezeli', p[5]]  # <-- lista, nie string!
     if len(p) == 6:
         nazwa = p[2]
         if nazwa in variables:
@@ -35,8 +40,7 @@ def p_wyrazenie(p):
         p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]}"
     
     if len(p) == 4:
-        if p[1] == "wypisz" or "wczytaj_z_klawiatury":
-            p[0] = f"{p[1]} {', '.join(p[2])}"
+        p[0] = f"{p[1]} {', '.join(p[2])}"
 
 def p_wyrazenie_arytmetyczne(p):
     '''wyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term
@@ -45,19 +49,23 @@ def p_wyrazenie_arytmetyczne(p):
                               | wyrazenie_arytmetyczne DZIELENIE term
                               | term'''
     if len(p) == 2:
-        if p[0] in variables:
-            p[0] = p[1]
+        p[0] = p[1]
     else:
-        p[0] = p[1] + p[2] + p[3]  # np. ('+', 'x', '2')
+        if p[2] == '/' and (p[3] == 0 or p[3] == '0'):
+            print(f"Błąd semantyczny: nie mozna dzielic przez 0, linia: {p.lineno(2)}")
+            raise SyntaxError
+        else:
+            p[0] = p[1] + p[2] + p[3]
     
 def p_term(p):
     '''term : ID
-              | LICZBA  '''
+            | LICZBA'''
+    if isinstance(p[1], str): 
+        if p.slice[1].type == 'ID':
+            if p[1] not in variables:
+                print(f"Błąd semantyczny: zmienna '{p[1]}' nie została zadeklarowana, linia: {p.lineno(1)}")
+                raise SyntaxError
     p[0] = p[1]
-
-def p_term_error(p):
-    if len(p[0]) == 1:
-        print(f"Błąd składni: po 'wypisz' brakuje nazwy zmiennej, linia: {p.lineno(1)}")
 
 def p_lista_id(p):
     '''lista_id : lista_id PRZECINEK ID
@@ -81,7 +89,7 @@ def p_wyrazenie_wypisz_error(p):
         print(f"Błąd składni: po 'wypisz' brakuje srednika lub zmiennej lub przecinka, linia: {p.lineno(1)}")
     elif len(p) == 3:
         print(f"Błąd składni: po 'wypisz' brakuje nazwy zmiennej, linia: {p.lineno(1)}")
-    parser.errok() 
+    sys.exit(1)
 
 def p_wyrazenie_calkowita_error(p):
     '''wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA error
@@ -97,7 +105,8 @@ def p_wyrazenie_calkowita_error(p):
         print(f"Błąd składni: po 'zmiennej' brakuje operatora przypisania, linia: {p.lineno(1)}")
     if len(p) == 3:
         print(f"Błąd składni: po 'zmiennej' brakuje nazwy, linia: {p.lineno(1)}")
-    parser.errok() 
+    sys.exit(1)
+
 
 def p_epsilon(p):
     'epsilon :'
