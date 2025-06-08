@@ -31,7 +31,7 @@ class CPP:
     def create_int(self, tokens):
         cpp_int = "int"
         cpp_name = tokens[1]
-        cpp_value = tokens[2]
+        cpp_value = tokens[3]
         return cpp_int + " " + cpp_name + " " + self.cpp_equal + " " + cpp_value + self.semicolon + "\n"
 
     def create_cpp_file(self):

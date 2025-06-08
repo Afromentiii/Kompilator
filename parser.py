@@ -49,13 +49,30 @@ def p_lista_id(p):
             raise SyntaxError
         p[0] = [p[1]]
 
+
 def p_wyrazenie_wypisz_error(p):
-    '''wyrazenie : WYPISZ ID error
+    '''wyrazenie : WYPISZ lista_id error
                  | WYPISZ error '''
     if len(p) == 4:
-        print(f"Błąd składni: po 'wypisz' brakuje srednika, linia: {p.lineno(1)}")
+        print(f"Błąd składni: po 'wypisz' brakuje srednika lub zmiennej lub przecinka, linia: {p.lineno(1)}")
     elif len(p) == 3:
         print(f"Błąd składni: po 'wypisz' brakuje nazwy zmiennej, linia: {p.lineno(1)}")
+    parser.errok() 
+
+def p_wyrazenie_calkowita_error(p):
+    '''wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA error
+                 | CALKOWITA ID PRZYPISANIE error
+                 | CALKOWITA ID error
+                 | CALKOWITA error '''
+    
+    if len(p) == 6:
+        print(f"Błąd składni: po 'zmiennej' brakuje srednika, linia: {p.lineno(1)}")
+    if len(p) == 5:
+        print(f"Błąd składni: po 'zmiennej' brakuje liczby, linia: {p.lineno(1)}")
+    if len(p) == 4:
+        print(f"Błąd składni: po 'zmiennej' brakuje operatora przypisania, linia: {p.lineno(1)}")
+    if len(p) == 3:
+        print(f"Błąd składni: po 'zmiennej' brakuje nazwy, linia: {p.lineno(1)}")
     parser.errok() 
 
 def p_epsilon(p):
