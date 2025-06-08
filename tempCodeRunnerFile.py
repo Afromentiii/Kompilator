@@ -1,1 +1,2 @@
-cpp_generator = CPP(AST)
+
+def p_wyrazenia(p):

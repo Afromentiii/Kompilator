@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ALTERNATYWA CALKOWITA DOPOKI DZIELENIE GLOWNY ID JEZELI KOMENTARZ_JEDNOLINIJKOWY KOMENTARZ_WIELOLINIJKOWY KONIUNKCJA LEWA_KLAMRA LEWY_NAWIAS LICZBA MINUS MNIEJSZE MNIEJSZE_ROWNE NEGACJA PLUS PRAWA_KLAMRA PRAWY_NAWIAS PRZYPISANIE RAZY ROWNE SREDNIK WCZYTAJ WIEKSZE WIEKSZE_ROWNE WYPISZprogram : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA wyrazenia : wyrazenia wyrazenie\n                 | epsilonwyrazenie : CALKOWITA ID PRZYPISANIE LICZBA SREDNIKepsilon :'
+_lr_signature = 'ALTERNATYWA CALKOWITA DOPOKI DZIELENIE GLOWNY ID JEZELI KOMENTARZ_JEDNOLINIJKOWY KOMENTARZ_WIELOLINIJKOWY KONIUNKCJA LEWA_KLAMRA LEWY_NAWIAS LICZBA MINUS MNIEJSZE MNIEJSZE_ROWNE NEGACJA PLUS PRAWA_KLAMRA PRAWY_NAWIAS PRZECINEK PRZYPISANIE RAZY ROWNE SREDNIK WCZYTAJ WIEKSZE WIEKSZE_ROWNE WYPISZprogram : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA wyrazenia : wyrazenia wyrazenie\n                 | epsilonwyrazenie : CALKOWITA ID PRZYPISANIE LICZBA SREDNIK\n                 | WYPISZ lista_id SREDNIKlista_id : lista_id PRZECINEK ID\n                | IDwyrazenie : WYPISZ ID error\n                 | WYPISZ error epsilon :'
     
-_lr_action_items = {'GLOWNY':([0,],[2,]),'$end':([1,6,],[0,-1,]),'LEWA_KLAMRA':([2,],[3,]),'PRAWA_KLAMRA':([3,4,5,7,12,],[-5,6,-3,-2,-4,]),'CALKOWITA':([3,4,5,7,12,],[-5,8,-3,-2,-4,]),'ID':([8,],[9,]),'PRZYPISANIE':([9,],[10,]),'LICZBA':([10,],[11,]),'SREDNIK':([11,],[12,]),}
+_lr_action_items = {'GLOWNY':([0,],[2,]),'$end':([1,6,],[0,-1,]),'LEWA_KLAMRA':([2,],[3,]),'PRAWA_KLAMRA':([3,4,5,7,13,15,17,20,],[-10,6,-3,-2,-9,-5,-8,-4,]),'CALKOWITA':([3,4,5,7,13,15,17,20,],[-10,8,-3,-2,-9,-5,-8,-4,]),'WYPISZ':([3,4,5,7,13,15,17,20,],[-10,9,-3,-2,-9,-5,-8,-4,]),'ID':([8,9,16,],[10,12,19,]),'error':([9,12,],[13,17,]),'PRZYPISANIE':([10,],[14,]),'SREDNIK':([11,12,18,19,],[15,-7,20,-6,]),'PRZECINEK':([11,12,19,],[16,-7,-6,]),'LICZBA':([14,],[18,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'wyrazenia':([3,],[4,]),'epsilon':([3,],[5,]),'wyrazenie':([4,],[7,]),}
+_lr_goto_items = {'program':([0,],[1,]),'wyrazenia':([3,],[4,]),'epsilon':([3,],[5,]),'wyrazenie':([4,],[7,]),'lista_id':([9,],[11,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -27,9 +27,14 @@ for _k, _v in _lr_goto_items.items():
 del _lr_goto_items
 _lr_productions = [
   ("S' -> program","S'",1,None,None,None),
-  ('program -> GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA','program',4,'p_program','parser.py',6),
-  ('wyrazenia -> wyrazenia wyrazenie','wyrazenia',2,'p_wyrazenia','parser.py',10),
-  ('wyrazenia -> epsilon','wyrazenia',1,'p_wyrazenia','parser.py',11),
-  ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK','wyrazenie',5,'p_wyrazenie','parser.py',18),
-  ('epsilon -> <empty>','epsilon',0,'p_epsilon','parser.py',22),
+  ('program -> GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA','program',4,'p_program','parser.py',12),
+  ('wyrazenia -> wyrazenia wyrazenie','wyrazenia',2,'p_wyrazenia','parser.py',16),
+  ('wyrazenia -> epsilon','wyrazenia',1,'p_wyrazenia','parser.py',17),
+  ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK','wyrazenie',5,'p_wyrazenie','parser.py',24),
+  ('wyrazenie -> WYPISZ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',25),
+  ('lista_id -> lista_id PRZECINEK ID','lista_id',3,'p_lista_id','parser.py',39),
+  ('lista_id -> ID','lista_id',1,'p_lista_id','parser.py',40),
+  ('wyrazenie -> WYPISZ ID error','wyrazenie',3,'p_wyrazenie_wypisz_error','parser.py',53),
+  ('wyrazenie -> WYPISZ error','wyrazenie',2,'p_wyrazenie_wypisz_error','parser.py',54),
+  ('epsilon -> <empty>','epsilon',0,'p_epsilon','parser.py',62),
 ]

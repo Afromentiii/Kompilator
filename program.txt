@@ -1,4 +1,6 @@
 glowny 
 {
 calkowita x := 5; @dsadsadsa
+calkowita e := 5;
+wypisz x,;
 }

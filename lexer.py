@@ -32,6 +32,7 @@ tokens = [
     'LEWA_KLAMRA',
     'PRAWA_KLAMRA',
     'SREDNIK',
+    'PRZECINEK',
 ] + list(reserved.values())
 
 # Regexy
@@ -50,40 +51,34 @@ t_PRAWY_NAWIAS = r'\)'
 t_LEWA_KLAMRA = r'\{'
 t_PRAWA_KLAMRA = r'\}'
 t_SREDNIK = r';'
-# Liczby
+t_PRZECINEK = r','
+
 def t_LICZBA(t):
     r'\d+'
     return t
 
-# Identyfikatory i słowa kluczowe
 def t_ID(t):
     r'[a-zA-Z_][a-zA-Z_0-9]*'
     t.type = reserved.get(t.value, 'ID')
     return t
 
-# Komentarze
 def t_KOMENTARZ_JEDNOLINIJKOWY(t):
     r'\@.*'
     pass
-
 
 def t_KOMENTARZ_WIELOLINIJKOWY(t):
     r'\#\#(.|\n)*?\#\#' 
     t.lexer.lineno += t.value.count('\n')
     pass
 
-# Nowe linie
 def t_newline(t):
     r'\n+'
     t.lexer.lineno += len(t.value)
-# Ignorowane znaki
 
-# Obsługa błędów
 def t_error(t):
     print(f"Nieprawidłowy znak: {t.value[0]} w linii {t.lineno}")
 
 t_ignore  = ' \t'
 
-# Tworzenie analizatora
 lexer = lex.lex()
 lexer.lineno = 0
