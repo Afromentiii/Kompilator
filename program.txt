@@ -1,0 +1,4 @@
+glowny 
+{
+calkowita x := 5; @dsadsadsa
+}

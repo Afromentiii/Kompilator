@@ -1,0 +1,179 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    ALTERNATYWA
+    DOPOKI
+    DZIELENIE
+    JEZELI
+    KOMENTARZ_JEDNOLINIJKOWY
+    KOMENTARZ_WIELOLINIJKOWY
+    KONIUNKCJA
+    LEWY_NAWIAS
+    MINUS
+    MNIEJSZE
+    MNIEJSZE_ROWNE
+    NEGACJA
+    PLUS
+    PRAWY_NAWIAS
+    RAZY
+    ROWNE
+    WCZYTAJ
+    WIEKSZE
+    WIEKSZE_ROWNE
+    WYPISZ
+
+Grammar
+
+Rule 0     S' -> program
+Rule 1     program -> GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+Rule 2     wyrazenia -> wyrazenia wyrazenie
+Rule 3     wyrazenia -> epsilon
+Rule 4     wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK
+Rule 5     epsilon -> <empty>
+
+Terminals, with rules where they appear
+
+ALTERNATYWA          : 
+CALKOWITA            : 4
+DOPOKI               : 
+DZIELENIE            : 
+GLOWNY               : 1
+ID                   : 4
+JEZELI               : 
+KOMENTARZ_JEDNOLINIJKOWY : 
+KOMENTARZ_WIELOLINIJKOWY : 
+KONIUNKCJA           : 
+LEWA_KLAMRA          : 1
+LEWY_NAWIAS          : 
+LICZBA               : 4
+MINUS                : 
+MNIEJSZE             : 
+MNIEJSZE_ROWNE       : 
+NEGACJA              : 
+PLUS                 : 
+PRAWA_KLAMRA         : 1
+PRAWY_NAWIAS         : 
+PRZYPISANIE          : 4
+RAZY                 : 
+ROWNE                : 
+SREDNIK              : 4
+WCZYTAJ              : 
+WIEKSZE              : 
+WIEKSZE_ROWNE        : 
+WYPISZ               : 
+error                : 
+
+Nonterminals, with rules where they appear
+
+epsilon              : 3
+program              : 0
+wyrazenia            : 1 2
+wyrazenie            : 2
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . program
+    (1) program -> . GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+
+    GLOWNY          shift and go to state 2
+
+    program                        shift and go to state 1
+
+state 1
+
+    (0) S' -> program .
+
+
+
+state 2
+
+    (1) program -> GLOWNY . LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+
+    LEWA_KLAMRA     shift and go to state 3
+
+
+state 3
+
+    (1) program -> GLOWNY LEWA_KLAMRA . wyrazenia PRAWA_KLAMRA
+    (2) wyrazenia -> . wyrazenia wyrazenie
+    (3) wyrazenia -> . epsilon
+    (5) epsilon -> .
+
+    PRAWA_KLAMRA    reduce using rule 5 (epsilon -> .)
+    CALKOWITA       reduce using rule 5 (epsilon -> .)
+
+    wyrazenia                      shift and go to state 4
+    epsilon                        shift and go to state 5
+
+state 4
+
+    (1) program -> GLOWNY LEWA_KLAMRA wyrazenia . PRAWA_KLAMRA
+    (2) wyrazenia -> wyrazenia . wyrazenie
+    (4) wyrazenie -> . CALKOWITA ID PRZYPISANIE LICZBA SREDNIK
+
+    PRAWA_KLAMRA    shift and go to state 6
+    CALKOWITA       shift and go to state 8
+
+    wyrazenie                      shift and go to state 7
+
+state 5
+
+    (3) wyrazenia -> epsilon .
+
+    PRAWA_KLAMRA    reduce using rule 3 (wyrazenia -> epsilon .)
+    CALKOWITA       reduce using rule 3 (wyrazenia -> epsilon .)
+
+
+state 6
+
+    (1) program -> GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .
+
+    $end            reduce using rule 1 (program -> GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+
+
+state 7
+
+    (2) wyrazenia -> wyrazenia wyrazenie .
+
+    PRAWA_KLAMRA    reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
+    CALKOWITA       reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
+
+
+state 8
+
+    (4) wyrazenie -> CALKOWITA . ID PRZYPISANIE LICZBA SREDNIK
+
+    ID              shift and go to state 9
+
+
+state 9
+
+    (4) wyrazenie -> CALKOWITA ID . PRZYPISANIE LICZBA SREDNIK
+
+    PRZYPISANIE     shift and go to state 10
+
+
+state 10
+
+    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE . LICZBA SREDNIK
+
+    LICZBA          shift and go to state 11
+
+
+state 11
+
+    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA . SREDNIK
+
+    SREDNIK         shift and go to state 12
+
+
+state 12
+
+    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK .
+
+    PRAWA_KLAMRA    reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK .)
+    CALKOWITA       reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK .)
+

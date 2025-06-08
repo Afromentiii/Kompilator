@@ -1,1 +1,1 @@
-t_ignore = r'\t'
+cpp_generator = CPP(AST)
