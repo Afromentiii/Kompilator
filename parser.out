@@ -18,7 +18,6 @@ Unused terminals:
     PRAWY_NAWIAS
     RAZY
     ROWNE
-    WCZYTAJ
     WIEKSZE
     WIEKSZE_ROWNE
 
@@ -30,31 +29,32 @@ Rule 2     wyrazenia -> wyrazenia wyrazenie
 Rule 3     wyrazenia -> epsilon
 Rule 4     wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK
 Rule 5     wyrazenie -> WYPISZ lista_id SREDNIK
-Rule 6     lista_id -> lista_id PRZECINEK ID
-Rule 7     lista_id -> ID
-Rule 8     wyrazenie -> WYPISZ lista_id error
-Rule 9     wyrazenie -> WYPISZ error
-Rule 10    wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error
-Rule 11    wyrazenie -> CALKOWITA ID PRZYPISANIE error
-Rule 12    wyrazenie -> CALKOWITA ID error
-Rule 13    wyrazenie -> CALKOWITA error
-Rule 14    epsilon -> <empty>
+Rule 6     wyrazenie -> WCZYTAJ lista_id SREDNIK
+Rule 7     lista_id -> lista_id PRZECINEK ID
+Rule 8     lista_id -> ID
+Rule 9     wyrazenie -> WYPISZ lista_id error
+Rule 10    wyrazenie -> WYPISZ error
+Rule 11    wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error
+Rule 12    wyrazenie -> CALKOWITA ID PRZYPISANIE error
+Rule 13    wyrazenie -> CALKOWITA ID error
+Rule 14    wyrazenie -> CALKOWITA error
+Rule 15    epsilon -> <empty>
 
 Terminals, with rules where they appear
 
 ALTERNATYWA          : 
-CALKOWITA            : 4 10 11 12 13
+CALKOWITA            : 4 11 12 13 14
 DOPOKI               : 
 DZIELENIE            : 
 GLOWNY               : 1
-ID                   : 4 6 7 10 11 12
+ID                   : 4 7 8 11 12 13
 JEZELI               : 
 KOMENTARZ_JEDNOLINIJKOWY : 
 KOMENTARZ_WIELOLINIJKOWY : 
 KONIUNKCJA           : 
 LEWA_KLAMRA          : 1
 LEWY_NAWIAS          : 
-LICZBA               : 4 10
+LICZBA               : 4 11
 MINUS                : 
 MNIEJSZE             : 
 MNIEJSZE_ROWNE       : 
@@ -62,21 +62,21 @@ NEGACJA              :
 PLUS                 : 
 PRAWA_KLAMRA         : 1
 PRAWY_NAWIAS         : 
-PRZECINEK            : 6
-PRZYPISANIE          : 4 10 11
+PRZECINEK            : 7
+PRZYPISANIE          : 4 11 12
 RAZY                 : 
 ROWNE                : 
-SREDNIK              : 4 5
-WCZYTAJ              : 
+SREDNIK              : 4 5 6
+WCZYTAJ              : 6
 WIEKSZE              : 
 WIEKSZE_ROWNE        : 
-WYPISZ               : 5 8 9
-error                : 8 9 10 11 12 13
+WYPISZ               : 5 9 10
+error                : 9 10 11 12 13 14
 
 Nonterminals, with rules where they appear
 
 epsilon              : 3
-lista_id             : 5 6 8
+lista_id             : 5 6 7 9
 program              : 0
 wyrazenia            : 1 2
 wyrazenie            : 2
@@ -110,11 +110,12 @@ state 3
     (1) program -> GLOWNY LEWA_KLAMRA . wyrazenia PRAWA_KLAMRA
     (2) wyrazenia -> . wyrazenia wyrazenie
     (3) wyrazenia -> . epsilon
-    (14) epsilon -> .
+    (15) epsilon -> .
 
-    PRAWA_KLAMRA    reduce using rule 14 (epsilon -> .)
-    CALKOWITA       reduce using rule 14 (epsilon -> .)
-    WYPISZ          reduce using rule 14 (epsilon -> .)
+    PRAWA_KLAMRA    reduce using rule 15 (epsilon -> .)
+    CALKOWITA       reduce using rule 15 (epsilon -> .)
+    WYPISZ          reduce using rule 15 (epsilon -> .)
+    WCZYTAJ         reduce using rule 15 (epsilon -> .)
 
     wyrazenia                      shift and go to state 4
     epsilon                        shift and go to state 5
@@ -125,16 +126,18 @@ state 4
     (2) wyrazenia -> wyrazenia . wyrazenie
     (4) wyrazenie -> . CALKOWITA ID PRZYPISANIE LICZBA SREDNIK
     (5) wyrazenie -> . WYPISZ lista_id SREDNIK
-    (8) wyrazenie -> . WYPISZ lista_id error
-    (9) wyrazenie -> . WYPISZ error
-    (10) wyrazenie -> . CALKOWITA ID PRZYPISANIE LICZBA error
-    (11) wyrazenie -> . CALKOWITA ID PRZYPISANIE error
-    (12) wyrazenie -> . CALKOWITA ID error
-    (13) wyrazenie -> . CALKOWITA error
+    (6) wyrazenie -> . WCZYTAJ lista_id SREDNIK
+    (9) wyrazenie -> . WYPISZ lista_id error
+    (10) wyrazenie -> . WYPISZ error
+    (11) wyrazenie -> . CALKOWITA ID PRZYPISANIE LICZBA error
+    (12) wyrazenie -> . CALKOWITA ID PRZYPISANIE error
+    (13) wyrazenie -> . CALKOWITA ID error
+    (14) wyrazenie -> . CALKOWITA error
 
     PRAWA_KLAMRA    shift and go to state 6
     CALKOWITA       shift and go to state 8
     WYPISZ          shift and go to state 9
+    WCZYTAJ         shift and go to state 10
 
     wyrazenie                      shift and go to state 7
 
@@ -145,6 +148,7 @@ state 5
     PRAWA_KLAMRA    reduce using rule 3 (wyrazenia -> epsilon .)
     CALKOWITA       reduce using rule 3 (wyrazenia -> epsilon .)
     WYPISZ          reduce using rule 3 (wyrazenia -> epsilon .)
+    WCZYTAJ         reduce using rule 3 (wyrazenia -> epsilon .)
 
 
 state 6
@@ -161,167 +165,205 @@ state 7
     PRAWA_KLAMRA    reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
     CALKOWITA       reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
     WYPISZ          reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
+    WCZYTAJ         reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
 
 
 state 8
 
     (4) wyrazenie -> CALKOWITA . ID PRZYPISANIE LICZBA SREDNIK
-    (10) wyrazenie -> CALKOWITA . ID PRZYPISANIE LICZBA error
-    (11) wyrazenie -> CALKOWITA . ID PRZYPISANIE error
-    (12) wyrazenie -> CALKOWITA . ID error
-    (13) wyrazenie -> CALKOWITA . error
+    (11) wyrazenie -> CALKOWITA . ID PRZYPISANIE LICZBA error
+    (12) wyrazenie -> CALKOWITA . ID PRZYPISANIE error
+    (13) wyrazenie -> CALKOWITA . ID error
+    (14) wyrazenie -> CALKOWITA . error
 
-    ID              shift and go to state 10
-    error           shift and go to state 11
+    ID              shift and go to state 11
+    error           shift and go to state 12
 
 
 state 9
 
     (5) wyrazenie -> WYPISZ . lista_id SREDNIK
-    (8) wyrazenie -> WYPISZ . lista_id error
-    (9) wyrazenie -> WYPISZ . error
-    (6) lista_id -> . lista_id PRZECINEK ID
-    (7) lista_id -> . ID
+    (9) wyrazenie -> WYPISZ . lista_id error
+    (10) wyrazenie -> WYPISZ . error
+    (7) lista_id -> . lista_id PRZECINEK ID
+    (8) lista_id -> . ID
 
-    error           shift and go to state 13
-    ID              shift and go to state 14
+    error           shift and go to state 14
+    ID              shift and go to state 15
 
-    lista_id                       shift and go to state 12
+    lista_id                       shift and go to state 13
 
 state 10
 
-    (4) wyrazenie -> CALKOWITA ID . PRZYPISANIE LICZBA SREDNIK
-    (10) wyrazenie -> CALKOWITA ID . PRZYPISANIE LICZBA error
-    (11) wyrazenie -> CALKOWITA ID . PRZYPISANIE error
-    (12) wyrazenie -> CALKOWITA ID . error
+    (6) wyrazenie -> WCZYTAJ . lista_id SREDNIK
+    (7) lista_id -> . lista_id PRZECINEK ID
+    (8) lista_id -> . ID
 
-    PRZYPISANIE     shift and go to state 15
-    error           shift and go to state 16
+    ID              shift and go to state 15
 
+    lista_id                       shift and go to state 16
 
 state 11
 
-    (13) wyrazenie -> CALKOWITA error .
+    (4) wyrazenie -> CALKOWITA ID . PRZYPISANIE LICZBA SREDNIK
+    (11) wyrazenie -> CALKOWITA ID . PRZYPISANIE LICZBA error
+    (12) wyrazenie -> CALKOWITA ID . PRZYPISANIE error
+    (13) wyrazenie -> CALKOWITA ID . error
 
-    PRAWA_KLAMRA    reduce using rule 13 (wyrazenie -> CALKOWITA error .)
-    CALKOWITA       reduce using rule 13 (wyrazenie -> CALKOWITA error .)
-    WYPISZ          reduce using rule 13 (wyrazenie -> CALKOWITA error .)
+    PRZYPISANIE     shift and go to state 17
+    error           shift and go to state 18
 
 
 state 12
 
-    (5) wyrazenie -> WYPISZ lista_id . SREDNIK
-    (8) wyrazenie -> WYPISZ lista_id . error
-    (6) lista_id -> lista_id . PRZECINEK ID
+    (14) wyrazenie -> CALKOWITA error .
 
-    SREDNIK         shift and go to state 17
-    error           shift and go to state 18
-    PRZECINEK       shift and go to state 19
+    PRAWA_KLAMRA    reduce using rule 14 (wyrazenie -> CALKOWITA error .)
+    CALKOWITA       reduce using rule 14 (wyrazenie -> CALKOWITA error .)
+    WYPISZ          reduce using rule 14 (wyrazenie -> CALKOWITA error .)
+    WCZYTAJ         reduce using rule 14 (wyrazenie -> CALKOWITA error .)
 
 
 state 13
 
-    (9) wyrazenie -> WYPISZ error .
+    (5) wyrazenie -> WYPISZ lista_id . SREDNIK
+    (9) wyrazenie -> WYPISZ lista_id . error
+    (7) lista_id -> lista_id . PRZECINEK ID
 
-    PRAWA_KLAMRA    reduce using rule 9 (wyrazenie -> WYPISZ error .)
-    CALKOWITA       reduce using rule 9 (wyrazenie -> WYPISZ error .)
-    WYPISZ          reduce using rule 9 (wyrazenie -> WYPISZ error .)
+    SREDNIK         shift and go to state 19
+    error           shift and go to state 20
+    PRZECINEK       shift and go to state 21
 
 
 state 14
 
-    (7) lista_id -> ID .
+    (10) wyrazenie -> WYPISZ error .
 
-    SREDNIK         reduce using rule 7 (lista_id -> ID .)
-    error           reduce using rule 7 (lista_id -> ID .)
-    PRZECINEK       reduce using rule 7 (lista_id -> ID .)
+    PRAWA_KLAMRA    reduce using rule 10 (wyrazenie -> WYPISZ error .)
+    CALKOWITA       reduce using rule 10 (wyrazenie -> WYPISZ error .)
+    WYPISZ          reduce using rule 10 (wyrazenie -> WYPISZ error .)
+    WCZYTAJ         reduce using rule 10 (wyrazenie -> WYPISZ error .)
 
 
 state 15
 
-    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE . LICZBA SREDNIK
-    (10) wyrazenie -> CALKOWITA ID PRZYPISANIE . LICZBA error
-    (11) wyrazenie -> CALKOWITA ID PRZYPISANIE . error
+    (8) lista_id -> ID .
 
-    LICZBA          shift and go to state 20
-    error           shift and go to state 21
+    SREDNIK         reduce using rule 8 (lista_id -> ID .)
+    error           reduce using rule 8 (lista_id -> ID .)
+    PRZECINEK       reduce using rule 8 (lista_id -> ID .)
 
 
 state 16
 
-    (12) wyrazenie -> CALKOWITA ID error .
+    (6) wyrazenie -> WCZYTAJ lista_id . SREDNIK
+    (7) lista_id -> lista_id . PRZECINEK ID
 
-    PRAWA_KLAMRA    reduce using rule 12 (wyrazenie -> CALKOWITA ID error .)
-    CALKOWITA       reduce using rule 12 (wyrazenie -> CALKOWITA ID error .)
-    WYPISZ          reduce using rule 12 (wyrazenie -> CALKOWITA ID error .)
+    SREDNIK         shift and go to state 22
+    PRZECINEK       shift and go to state 21
 
 
 state 17
+
+    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE . LICZBA SREDNIK
+    (11) wyrazenie -> CALKOWITA ID PRZYPISANIE . LICZBA error
+    (12) wyrazenie -> CALKOWITA ID PRZYPISANIE . error
+
+    LICZBA          shift and go to state 23
+    error           shift and go to state 24
+
+
+state 18
+
+    (13) wyrazenie -> CALKOWITA ID error .
+
+    PRAWA_KLAMRA    reduce using rule 13 (wyrazenie -> CALKOWITA ID error .)
+    CALKOWITA       reduce using rule 13 (wyrazenie -> CALKOWITA ID error .)
+    WYPISZ          reduce using rule 13 (wyrazenie -> CALKOWITA ID error .)
+    WCZYTAJ         reduce using rule 13 (wyrazenie -> CALKOWITA ID error .)
+
+
+state 19
 
     (5) wyrazenie -> WYPISZ lista_id SREDNIK .
 
     PRAWA_KLAMRA    reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
     CALKOWITA       reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
     WYPISZ          reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
-
-
-state 18
-
-    (8) wyrazenie -> WYPISZ lista_id error .
-
-    PRAWA_KLAMRA    reduce using rule 8 (wyrazenie -> WYPISZ lista_id error .)
-    CALKOWITA       reduce using rule 8 (wyrazenie -> WYPISZ lista_id error .)
-    WYPISZ          reduce using rule 8 (wyrazenie -> WYPISZ lista_id error .)
-
-
-state 19
-
-    (6) lista_id -> lista_id PRZECINEK . ID
-
-    ID              shift and go to state 22
+    WCZYTAJ         reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
 
 
 state 20
 
-    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA . SREDNIK
-    (10) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA . error
+    (9) wyrazenie -> WYPISZ lista_id error .
 
-    SREDNIK         shift and go to state 23
-    error           shift and go to state 24
+    PRAWA_KLAMRA    reduce using rule 9 (wyrazenie -> WYPISZ lista_id error .)
+    CALKOWITA       reduce using rule 9 (wyrazenie -> WYPISZ lista_id error .)
+    WYPISZ          reduce using rule 9 (wyrazenie -> WYPISZ lista_id error .)
+    WCZYTAJ         reduce using rule 9 (wyrazenie -> WYPISZ lista_id error .)
 
 
 state 21
 
-    (11) wyrazenie -> CALKOWITA ID PRZYPISANIE error .
+    (7) lista_id -> lista_id PRZECINEK . ID
 
-    PRAWA_KLAMRA    reduce using rule 11 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
-    CALKOWITA       reduce using rule 11 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
-    WYPISZ          reduce using rule 11 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    ID              shift and go to state 25
 
 
 state 22
 
-    (6) lista_id -> lista_id PRZECINEK ID .
+    (6) wyrazenie -> WCZYTAJ lista_id SREDNIK .
 
-    SREDNIK         reduce using rule 6 (lista_id -> lista_id PRZECINEK ID .)
-    error           reduce using rule 6 (lista_id -> lista_id PRZECINEK ID .)
-    PRZECINEK       reduce using rule 6 (lista_id -> lista_id PRZECINEK ID .)
+    PRAWA_KLAMRA    reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    CALKOWITA       reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    WYPISZ          reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    WCZYTAJ         reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
 
 
 state 23
+
+    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA . SREDNIK
+    (11) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA . error
+
+    SREDNIK         shift and go to state 26
+    error           shift and go to state 27
+
+
+state 24
+
+    (12) wyrazenie -> CALKOWITA ID PRZYPISANIE error .
+
+    PRAWA_KLAMRA    reduce using rule 12 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    CALKOWITA       reduce using rule 12 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    WYPISZ          reduce using rule 12 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    WCZYTAJ         reduce using rule 12 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+
+
+state 25
+
+    (7) lista_id -> lista_id PRZECINEK ID .
+
+    SREDNIK         reduce using rule 7 (lista_id -> lista_id PRZECINEK ID .)
+    error           reduce using rule 7 (lista_id -> lista_id PRZECINEK ID .)
+    PRZECINEK       reduce using rule 7 (lista_id -> lista_id PRZECINEK ID .)
+
+
+state 26
 
     (4) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK .
 
     PRAWA_KLAMRA    reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK .)
     CALKOWITA       reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK .)
     WYPISZ          reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK .)
+    WCZYTAJ         reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK .)
 
 
-state 24
+state 27
 
-    (10) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .
+    (11) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .
 
-    PRAWA_KLAMRA    reduce using rule 10 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
-    CALKOWITA       reduce using rule 10 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
-    WYPISZ          reduce using rule 10 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    PRAWA_KLAMRA    reduce using rule 11 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    CALKOWITA       reduce using rule 11 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    WYPISZ          reduce using rule 11 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    WCZYTAJ         reduce using rule 11 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
 

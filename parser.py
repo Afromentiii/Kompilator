@@ -6,7 +6,7 @@ from CPP import CPP
 from lexer import tokens
 from lexer import lexer
 
-symbols = []
+variables = []
 
 def p_program(p):
     '''program : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA '''
@@ -22,29 +22,32 @@ def p_wyrazenia(p):
     
 def p_wyrazenie(p):
     '''wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA SREDNIK
-                 | WYPISZ lista_id SREDNIK'''
+                 | WYPISZ lista_id SREDNIK
+                 | WCZYTAJ lista_id SREDNIK'''
     if len(p) == 6:
         nazwa = p[2]
-        if nazwa in symbols:
+        if nazwa in variables:
             print(f"Błąd semantyczny: zmienna '{nazwa}' już zdefiniowana, linia: {p.lineno(2)}")
             raise SyntaxError
         else:
-            symbols.append(nazwa)
+            variables.append(nazwa)
         p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]}"
     
     if len(p) == 4:
-        p[0] = f"{p[1]} {', '.join(p[2])}"
+        if p[1] == "wypisz" or "wczytaj_z_klawiatury":
+            p[0] = f"{p[1]} {', '.join(p[2])}"
+
 
 def p_lista_id(p):
     '''lista_id : lista_id PRZECINEK ID
                 | ID'''
     if len(p) == 4:
-        if p[3] not in symbols:
+        if p[3] not in variables:
             print(f"Błąd semantyczny: zmienna '{p[3]}' nie została zadeklarowana, linia: {p.lineno(3)}")
             raise SyntaxError
         p[0] = p[1] + [p[3]]
     else:
-        if p[1] not in symbols:
+        if p[1] not in variables:
             print(f"Błąd semantyczny: zmienna '{p[1]}' nie została zadeklarowana, linia: {p.lineno(1)}")
             raise SyntaxError
         p[0] = [p[1]]
@@ -103,6 +106,6 @@ with open("program.txt", "r", encoding="utf-8") as f:
 
         cpp_generator = CPP(AST)
         cpp_file = cpp_generator.create_cpp_file()
-        # cpp_generator.save(cpp_file)
+        cpp_generator.save(cpp_file)
         # cpp_generator.compile("output.cpp")
 

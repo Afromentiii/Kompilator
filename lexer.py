@@ -81,4 +81,4 @@ def t_error(t):
 t_ignore  = ' \t'
 
 lexer = lex.lex()
-lexer.lineno = 0
+lexer.lineno = 1

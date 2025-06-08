@@ -6,9 +6,9 @@ _tabversion = '3.10'
 
 _lr_method = 'LALR'
 
-_lr_signature = 'ALTERNATYWA CALKOWITA DOPOKI DZIELENIE GLOWNY ID JEZELI KOMENTARZ_JEDNOLINIJKOWY KOMENTARZ_WIELOLINIJKOWY KONIUNKCJA LEWA_KLAMRA LEWY_NAWIAS LICZBA MINUS MNIEJSZE MNIEJSZE_ROWNE NEGACJA PLUS PRAWA_KLAMRA PRAWY_NAWIAS PRZECINEK PRZYPISANIE RAZY ROWNE SREDNIK WCZYTAJ WIEKSZE WIEKSZE_ROWNE WYPISZprogram : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA wyrazenia : wyrazenia wyrazenie\n                 | epsilonwyrazenie : CALKOWITA ID PRZYPISANIE LICZBA SREDNIK\n                 | WYPISZ lista_id SREDNIKlista_id : lista_id PRZECINEK ID\n                | IDwyrazenie : WYPISZ lista_id error\n                 | WYPISZ error wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA error\n                 | CALKOWITA ID PRZYPISANIE error\n                 | CALKOWITA ID error\n                 | CALKOWITA error epsilon :'
+_lr_signature = 'ALTERNATYWA CALKOWITA DOPOKI DZIELENIE GLOWNY ID JEZELI KOMENTARZ_JEDNOLINIJKOWY KOMENTARZ_WIELOLINIJKOWY KONIUNKCJA LEWA_KLAMRA LEWY_NAWIAS LICZBA MINUS MNIEJSZE MNIEJSZE_ROWNE NEGACJA PLUS PRAWA_KLAMRA PRAWY_NAWIAS PRZECINEK PRZYPISANIE RAZY ROWNE SREDNIK WCZYTAJ WIEKSZE WIEKSZE_ROWNE WYPISZprogram : GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA wyrazenia : wyrazenia wyrazenie\n                 | epsilonwyrazenie : CALKOWITA ID PRZYPISANIE LICZBA SREDNIK\n                 | WYPISZ lista_id SREDNIK\n                 | WCZYTAJ lista_id SREDNIKlista_id : lista_id PRZECINEK ID\n                | IDwyrazenie : WYPISZ lista_id error\n                 | WYPISZ error wyrazenie : CALKOWITA ID PRZYPISANIE LICZBA error\n                 | CALKOWITA ID PRZYPISANIE error\n                 | CALKOWITA ID error\n                 | CALKOWITA error epsilon :'
     
-_lr_action_items = {'GLOWNY':([0,],[2,]),'$end':([1,6,],[0,-1,]),'LEWA_KLAMRA':([2,],[3,]),'PRAWA_KLAMRA':([3,4,5,7,11,13,16,17,18,21,23,24,],[-14,6,-3,-2,-13,-9,-12,-5,-8,-11,-4,-10,]),'CALKOWITA':([3,4,5,7,11,13,16,17,18,21,23,24,],[-14,8,-3,-2,-13,-9,-12,-5,-8,-11,-4,-10,]),'WYPISZ':([3,4,5,7,11,13,16,17,18,21,23,24,],[-14,9,-3,-2,-13,-9,-12,-5,-8,-11,-4,-10,]),'ID':([8,9,19,],[10,14,22,]),'error':([8,9,10,12,14,15,20,22,],[11,13,16,18,-7,21,24,-6,]),'PRZYPISANIE':([10,],[15,]),'SREDNIK':([12,14,20,22,],[17,-7,23,-6,]),'PRZECINEK':([12,14,22,],[19,-7,-6,]),'LICZBA':([15,],[20,]),}
+_lr_action_items = {'GLOWNY':([0,],[2,]),'$end':([1,6,],[0,-1,]),'LEWA_KLAMRA':([2,],[3,]),'PRAWA_KLAMRA':([3,4,5,7,12,14,18,19,20,22,24,26,27,],[-15,6,-3,-2,-14,-10,-13,-5,-9,-6,-12,-4,-11,]),'CALKOWITA':([3,4,5,7,12,14,18,19,20,22,24,26,27,],[-15,8,-3,-2,-14,-10,-13,-5,-9,-6,-12,-4,-11,]),'WYPISZ':([3,4,5,7,12,14,18,19,20,22,24,26,27,],[-15,9,-3,-2,-14,-10,-13,-5,-9,-6,-12,-4,-11,]),'WCZYTAJ':([3,4,5,7,12,14,18,19,20,22,24,26,27,],[-15,10,-3,-2,-14,-10,-13,-5,-9,-6,-12,-4,-11,]),'ID':([8,9,10,21,],[11,15,15,25,]),'error':([8,9,11,13,15,17,23,25,],[12,14,18,20,-8,24,27,-7,]),'PRZYPISANIE':([11,],[17,]),'SREDNIK':([13,15,16,23,25,],[19,-8,22,26,-7,]),'PRZECINEK':([13,15,16,25,],[21,-8,21,-7,]),'LICZBA':([17,],[23,]),}
 
 _lr_action = {}
 for _k, _v in _lr_action_items.items():
@@ -17,7 +17,7 @@ for _k, _v in _lr_action_items.items():
       _lr_action[_x][_k] = _y
 del _lr_action_items
 
-_lr_goto_items = {'program':([0,],[1,]),'wyrazenia':([3,],[4,]),'epsilon':([3,],[5,]),'wyrazenie':([4,],[7,]),'lista_id':([9,],[12,]),}
+_lr_goto_items = {'program':([0,],[1,]),'wyrazenia':([3,],[4,]),'epsilon':([3,],[5,]),'wyrazenie':([4,],[7,]),'lista_id':([9,10,],[13,16,]),}
 
 _lr_goto = {}
 for _k, _v in _lr_goto_items.items():
@@ -32,13 +32,14 @@ _lr_productions = [
   ('wyrazenia -> epsilon','wyrazenia',1,'p_wyrazenia','parser.py',17),
   ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA SREDNIK','wyrazenie',5,'p_wyrazenie','parser.py',24),
   ('wyrazenie -> WYPISZ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',25),
-  ('lista_id -> lista_id PRZECINEK ID','lista_id',3,'p_lista_id','parser.py',39),
-  ('lista_id -> ID','lista_id',1,'p_lista_id','parser.py',40),
-  ('wyrazenie -> WYPISZ lista_id error','wyrazenie',3,'p_wyrazenie_wypisz_error','parser.py',54),
-  ('wyrazenie -> WYPISZ error','wyrazenie',2,'p_wyrazenie_wypisz_error','parser.py',55),
-  ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error','wyrazenie',5,'p_wyrazenie_calkowita_error','parser.py',63),
-  ('wyrazenie -> CALKOWITA ID PRZYPISANIE error','wyrazenie',4,'p_wyrazenie_calkowita_error','parser.py',64),
-  ('wyrazenie -> CALKOWITA ID error','wyrazenie',3,'p_wyrazenie_calkowita_error','parser.py',65),
-  ('wyrazenie -> CALKOWITA error','wyrazenie',2,'p_wyrazenie_calkowita_error','parser.py',66),
-  ('epsilon -> <empty>','epsilon',0,'p_epsilon','parser.py',79),
+  ('wyrazenie -> WCZYTAJ lista_id SREDNIK','wyrazenie',3,'p_wyrazenie','parser.py',26),
+  ('lista_id -> lista_id PRZECINEK ID','lista_id',3,'p_lista_id','parser.py',42),
+  ('lista_id -> ID','lista_id',1,'p_lista_id','parser.py',43),
+  ('wyrazenie -> WYPISZ lista_id error','wyrazenie',3,'p_wyrazenie_wypisz_error','parser.py',57),
+  ('wyrazenie -> WYPISZ error','wyrazenie',2,'p_wyrazenie_wypisz_error','parser.py',58),
+  ('wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error','wyrazenie',5,'p_wyrazenie_calkowita_error','parser.py',66),
+  ('wyrazenie -> CALKOWITA ID PRZYPISANIE error','wyrazenie',4,'p_wyrazenie_calkowita_error','parser.py',67),
+  ('wyrazenie -> CALKOWITA ID error','wyrazenie',3,'p_wyrazenie_calkowita_error','parser.py',68),
+  ('wyrazenie -> CALKOWITA error','wyrazenie',2,'p_wyrazenie_calkowita_error','parser.py',69),
+  ('epsilon -> <empty>','epsilon',0,'p_epsilon','parser.py',82),
 ]

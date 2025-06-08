@@ -22,11 +22,23 @@ class CPP:
               if(tokens[0] == "wypisz"):
                    line = self.create_cout(tokens)
                    self.code_lines.append(line)
+              if(tokens[0] == "wczytaj_z_klawiatury"):
+                   line = self.create_cin(tokens)
+                   self.code_lines.append(line)
                    
     def create_cout(self, tokens):
-         cpp_cout = "cout <<"
-         cpp_cout_value = tokens[1]
-         return cpp_cout + cpp_cout_value
+        # print(tokens)
+        args = tokens[1:]
+        args_clean = [token.replace(',', '') for token in args]
+        cpp_cout_value =  ' << " " << '.join(args_clean)
+        return "cout << " + cpp_cout_value + " << endl;\n"
+    
+    def create_cin(self, tokens):
+        #print(tokens)
+        args = tokens[1:]
+        args_clean = [token.replace(',', '') for token in args]
+        cpp_cout_value = " >> ".join(args_clean)
+        return "cin >> " + cpp_cout_value + ";\n"
 
     def create_int(self, tokens):
         cpp_int = "int"
@@ -39,7 +51,6 @@ class CPP:
          self.ast_travelsal()
          self.code_lines.append("return 0;")
          self.code_lines.append("\n}")
-         print(self.AST)
         
          output = str()
          for line in self.code_lines:
