@@ -1,0 +1,23 @@
+glowny
+{
+    calkowita a := 5;
+    wypisz a;
+    a := 5;
+    calkowita b := 11 + 22 - 33 + 11 / 5 * 3;
+    wypisz b;
+    @ rzuci blad semantyczny a := nie 5;
+    calkowita c := a;
+    wypisz c;
+    c := b + 5 + c + a + 100;
+    wypisz c;
+    wypisz a; @komentarz jednolinjkowy
+    jezeli (a)
+    {
+        @calkowita a := 5; @zmienne sa globalne
+        ## komentarz wielolinijkowy
+        calkowita a := 5;
+        wypisz a;
+        wypisz a; @komentarz jednolinjkowy
+        ##
+    }
+}

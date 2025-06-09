@@ -65,7 +65,7 @@ def p_warunki_logiczne(p):
     if len(p) == 2:
         p[0] = p[1]
     else:
-        p[0] = p[1] + ' ' + p[2] + ' '+ p[3]
+        p[0] = p[1] + p[2] + p[3]
 
 def p_wyrazenie_arytmetyczne(p):
     '''wyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term
@@ -226,7 +226,7 @@ def main():
     #     print(tok)
     
     AST = parser.parse(data)
-    print(AST)
+    # print(AST)
     if AST is not None:
         for symbol in AST[1]:
             if symbol is None:
@@ -236,7 +236,7 @@ def main():
         cpp_file = cpp_generator.create_cpp_file()
         cpp_generator.save(cpp_file)
         cpp_generator.compile("output.cpp")
-        # cpp_generator.run()
+        cpp_generator.run()
 
 if __name__ == "__main__":
     main()
