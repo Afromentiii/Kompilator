@@ -1,0 +1,11 @@
+glowny
+{
+    calkowita a := 5;
+    calkowita b := 6;
+    calkowita c := 7;
+    wypisz b;
+    wypisz a, b, c;
+    @blad skladniowy wypisz 5;
+    wczytaj_z_klawiatury a, b, c;
+    wypisz a, b, c;
+}
