@@ -6,7 +6,6 @@ from CPP import CPP
 from lexer import tokens
 from lexer import lexer
 
-
 variables = []
 
 def p_program(p):
@@ -89,7 +88,6 @@ def p_term(p):
         # len(p) == 3, p[1] == NEGACJA, p[2] == term
         p[0] = p[1] + " " +p[2]
 
-
 def p_lista_id(p):
     '''lista_id : lista_id PRZECINEK ID
                 | ID'''
@@ -124,7 +122,6 @@ def p_wyrazenie_jezeli_error(p):
 
     sys.exit(1)
         
-
 def p_wyrazenie_wypisz_error(p):
     '''wyrazenie : WYPISZ lista_id error
                  | WYPISZ error '''
@@ -172,7 +169,6 @@ def p_error(p):
         print(f"Błąd składniowy przy tokenie '{p.value}', typ: {p.type}, linia: {p.lineno}")
     else:
         print("Błąd składniowy: nieoczekiwany koniec wejścia")
-
 
 parser = yacc.yacc()
 

@@ -3,13 +3,13 @@ glowny
 calkowita e := 111;
 wypisz e;
 calkowita x := e;
-x := 5;
 wypisz e, x;
 wczytaj_z_klawiatury e,x;
 wypisz e, x;
 
-jezeli(e)
+jezeli(nie 5 lub nie e)
 {
-
+wypisz e, x;
+wypisz e, x;
 }
 }

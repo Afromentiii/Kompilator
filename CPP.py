@@ -15,10 +15,8 @@ class CPP:
     
     def ast_travelsal(self, AST):
         for symbol in AST[1]:
-            if isinstance(symbol, list) and symbol[0] == "jezeli":
-                self.code_lines.append("if (true) {\n")  
-                self.ast_travelsal(('blok', symbol[1]))
-                self.code_lines.append("}\n")
+            if isinstance(symbol, list) and symbol[1] == "jezeli":
+                self.generate_if(symbol)
             elif isinstance(symbol, str):
                 tokens = symbol.split()
                 if tokens[0] == "calkowita":
@@ -42,10 +40,21 @@ class CPP:
         cpp_cout_value = " >> ".join(args_clean)
         return "cin >> " + cpp_cout_value + ";\n"
     
-    # def generate_if(self, symbol):
-    #      self.code_lines.append("if () {\n")
-    #      self.ast_travelsal(symbol[1])
-    #      self.code_lines.append("}\n")
+    def generate_if(self, symbol):
+         cpp_if_condition = str()
+         condition_tokens = symbol[0].split()
+         for token in condition_tokens:
+             if token == "lub":
+                 cpp_if_condition += "||"
+             elif token == "oraz":
+                 cpp_if_condition += "&&"
+             elif token == "nie":
+                cpp_if_condition += "!"
+             else:
+                 cpp_if_condition += token
+         self.code_lines.append(f"if ({cpp_if_condition}) " + "{\n")
+         self.ast_travelsal(('blok', symbol[2]))
+         self.code_lines.append("}\n")
 
     def create_int(self, tokens):
         cpp_int = "int"
