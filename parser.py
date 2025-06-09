@@ -26,7 +26,7 @@ def p_wyrazenie(p):
                  | WYPISZ lista_id SREDNIK
                  | WCZYTAJ lista_id SREDNIK
                  | JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
-                 
+                 | DOPOKI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA               
                  '''
     if len(p) == 5:
         nazwa = p[1]
@@ -37,7 +37,10 @@ def p_wyrazenie(p):
             sys.exit(1)
 
     if len(p) == 8:
-        p[0] = [p[3]] + ['jezeli', p[6]]
+        if p[1] == "jezeli":
+            p[0] = [p[3]] + ['jezeli', p[6]]
+        else:
+            p[0] = [p[3]] + ['dopoki', p[6]]
     if len(p) == 6:
         nazwa = p[2]
         if nazwa in variables:
@@ -126,9 +129,29 @@ def p_wyrazenie_jezeli_error(p):
     elif len(p) == 4:
         print(f"Błąd składni: po 'lewym nawiasie' brakuje WARUNKÓW_LOGICZNYCH, linia: {p.lineno(1)}")
     elif len(p) == 2:
-        print(f"Błąd składni: po 'JEŻELI' brakuje LEWEGO_NAWIASU, linia: {p.lineno(1)}")
+        print(f"Błąd składni: po 'jezeli' brakuje LEWEGO_NAWIASU, linia: {p.lineno(1)}")
 
     sys.exit(1)
+
+def p_wyrazenie_dopoki_error(p):
+    '''wyrazenie : DOPOKI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
+                 | DOPOKI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
+                 | DOPOKI LEWY_NAWIAS warunki_logiczne error
+                 | DOPOKI LEWY_NAWIAS error
+                 | DOPOKI error'''
+
+    if len(p) == 8:
+        print(f"Błąd składni: po 'wyrażeniach' brakuje PRAWEJ_KLAMRY, linia: {p.lineno(1)}")
+    elif len(p) == 6:
+        print(f"Błąd składni: po 'prawym nawiasie' brakuje LEWEJ_KLAMRY, linia: {p.lineno(1)}")
+    elif len(p) == 5:
+        print(f"Błąd składni: po 'warunkach logicznych' brakuje PRAWEGO_NAWIASU, linia: {p.lineno(1)}")
+    elif len(p) == 4:
+        print(f"Błąd składni: po 'lewym nawiasie' brakuje WARUNKÓW_LOGICZNYCH, linia: {p.lineno(1)}")
+    elif len(p) == 2:
+        print(f"Błąd składni: po 'dopoki' brakuje LEWEGO_NAWIASU, linia: {p.lineno(1)}")
+
+    sys.exit(1)    
         
 def p_wyrazenie_wypisz_error(p):
     '''wyrazenie : WYPISZ lista_id error

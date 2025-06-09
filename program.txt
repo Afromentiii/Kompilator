@@ -1,15 +1,17 @@
 glowny 
 {
-calkowita e := 111 +  nie 111;
+calkowita e := 111 + 111;
 @wypisz e;
 calkowita x := e;
 @wypisz e, x;
 @wczytaj_z_klawiatury e,x;
 wypisz e, x;
-e := nie 5 / nie 1;
-jezeli(nie 5 >= nie e == 5)
+e :=  5 /  1;
+jezeli (e)
 {
-wypisz e, x;
-wypisz e, x;
+    dopoki(e)
+    {
+        
+    }
 }
 }

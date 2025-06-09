@@ -15,8 +15,11 @@ class CPP:
     
     def ast_travelsal(self, AST):
         for symbol in AST[1]:
-            if isinstance(symbol, list) and symbol[1] == "jezeli":
-                self.generate_if(symbol)
+            if isinstance(symbol, list):
+                if symbol[1] == "jezeli":
+                    self.generate_if_or_while(symbol, "if")
+                elif symbol[1] == "dopoki":
+                    self.generate_if_or_while(symbol, "while")
             elif isinstance(symbol, str):
                 tokens = symbol.split()
                 if tokens[0] == "calkowita":
@@ -27,6 +30,7 @@ class CPP:
                     self.code_lines.append(self.create_cin(tokens))
                 elif tokens[0] == "przypisz":
                     self.code_lines.append(self.create_assignment(tokens))
+
 
     def create_assignment(self, tokens):
         cpp_name = tokens[1]
@@ -46,7 +50,7 @@ class CPP:
         cpp_cout_value = " >> ".join(args_clean)
         return "cin >> " + cpp_cout_value + ";\n"
     
-    def generate_if(self, symbol):
+    def generate_if_or_while(self, symbol, instruction):
          cpp_if_condition = str()
          condition_tokens = symbol[0].split()
          for token in condition_tokens:
@@ -58,7 +62,7 @@ class CPP:
                 cpp_if_condition += "!"
              else:
                  cpp_if_condition += token
-         self.code_lines.append(f"if ({cpp_if_condition}) " + "{\n")
+         self.code_lines.append(f"{instruction} ({cpp_if_condition}) " + "{\n")
          self.ast_travelsal(('blok', symbol[2]))
          self.code_lines.append("}\n")
 
