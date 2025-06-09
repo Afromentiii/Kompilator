@@ -1,0 +1,13 @@
+glowny
+{
+    calkowita a := 1;
+    dopoki(a <= 5)
+    {
+        wypisz a;
+        a := a + 1;
+        jezeli(a == 4)
+        {
+            wypisz a;
+        }
+    }
+}

@@ -2,8 +2,13 @@ glowny
 {
     calkowita a := 1;
     calkowita b := 1;
-    jezeli (a lub b)
+    calkowita c := -1;
+    jezeli (a)
     {
         wypisz a, b;
+        jezeli(a < c oraz a)
+        {
+            wypisz c;
+        }
     }
 }

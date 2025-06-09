@@ -1,10 +1,12 @@
 #include <iostream> 
 using namespace std; 
 int main() { 
-int a = 1;
-int b = 1;
-if (a||b) {
-cout << a << " " << b << endl;
-}
+int a = 5;
+int b = 6;
+int c = 7;
+cout << b << endl;
+cout << a << " " << b << " " << c << endl;
+cin >> a >> b >> c;
+cout << a << " " << b << " " << c << endl;
 return 0;
 }
