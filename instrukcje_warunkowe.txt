@@ -2,11 +2,11 @@ glowny
 {
     calkowita a := 1;
     calkowita b := 1;
-    calkowita c := -1;
+    calkowita c := 5;
     jezeli (a)
     {
         wypisz a, b;
-        jezeli(a < c oraz a)
+        jezeli((a < c) oraz (a == b))
         {
             wypisz c;
         }

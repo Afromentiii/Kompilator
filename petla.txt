@@ -1,7 +1,7 @@
 glowny
 {
     calkowita a := 1;
-    dopoki(a <= 5)
+    dopoki((a <= 5) oraz (a==a))
     {
         wypisz a;
         a := a + 1;

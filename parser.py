@@ -54,18 +54,26 @@ def p_wyrazenie(p):
         p[0] = f"{p[1]} {', '.join(p[2])}"
 
 def p_warunki_logiczne(p):
-    '''warunki_logiczne : warunki_logiczne KONIUNKCJA term
-                        | warunki_logiczne ALTERNATYWA term
-                        | warunki_logiczne WIEKSZE term
-                        | warunki_logiczne WIEKSZE_ROWNE term
-                        | warunki_logiczne MNIEJSZE term
-                        | warunki_logiczne MNIEJSZE_ROWNE term
-                        | warunki_logiczne POROWNYWALNE term
-                        | term'''
+    '''warunki_logiczne : warunki_logiczne KONIUNKCJA logical_term
+                        | warunki_logiczne ALTERNATYWA logical_term
+                        | warunki_logiczne WIEKSZE logical_term
+                        | warunki_logiczne WIEKSZE_ROWNE logical_term
+                        | warunki_logiczne MNIEJSZE logical_term
+                        | warunki_logiczne MNIEJSZE_ROWNE logical_term
+                        | warunki_logiczne POROWNYWALNE logical_term
+                        | logical_term'''
     if len(p) == 2:
         p[0] = p[1]
     else:
         p[0] = p[1] + ' ' + p[2] + ' ' + p[3]
+
+def p_logical_term(p):
+    '''logical_term : term
+                    | LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS'''
+    if len(p) == 2:
+        p[0] = p[1]
+    else:
+        p[0] = p[1] + p[2] + p[3]
 
 def p_wyrazenie_arytmetyczne(p):
     '''wyrazenie_arytmetyczne : wyrazenie_arytmetyczne PLUS term
