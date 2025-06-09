@@ -25,7 +25,13 @@ class CPP:
                     self.code_lines.append(self.create_cout(tokens))
                 elif tokens[0] == "wczytaj_z_klawiatury":
                     self.code_lines.append(self.create_cin(tokens))
-               
+                elif tokens[0] == "przypisz":
+                    self.code_lines.append(self.create_assignment(tokens))
+
+    def create_assignment(self, tokens):
+        cpp_name = tokens[1]
+        cpp_value = tokens[3]
+        return cpp_name + " " + self.cpp_equal + " " + cpp_value + self.semicolon + "\n"
     def create_cout(self, tokens):
         # print(tokens)
         args = tokens[1:]
@@ -87,4 +93,14 @@ class CPP:
             print(f"Plik wykonywalny: {executable_name}")
         except subprocess.CalledProcessError as e:
             print("Błąd kompilacji:")
+            print(e.stderr)
+    
+    def run(self):
+        executable_path = "output.exe" if os.name == "nt" else f"./output.exe"
+        try:
+            result = subprocess.run([executable_path], check=True, capture_output=True, text=True)
+            print("Wynik działania programu:")
+            print(result.stdout)
+        except subprocess.CalledProcessError as e:
+            print("Błąd podczas uruchamiania programu:")
             print(e.stderr)

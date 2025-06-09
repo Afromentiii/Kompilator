@@ -41,6 +41,7 @@ tokens = [
     'PRAWA_KLAMRA',
     'SREDNIK',
     'PRZECINEK',
+    'POROWNYWALNE'
 ] + list(reserved.values())
 
 # Regexy
@@ -60,6 +61,7 @@ t_LEWA_KLAMRA = r'\{'
 t_PRAWA_KLAMRA = r'\}'
 t_SREDNIK = r';'
 t_PRZECINEK = r','
+t_POROWNYWALNE = r'=='
 
 def t_LICZBA(t):
     r'-?\d+'

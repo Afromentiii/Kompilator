@@ -34,7 +34,7 @@ def p_wyrazenie(p):
             p[0] = f"przypisz {p[1]} {p[2]} {p[3]} {p[4]}"
         else:
             print(f"Błąd semantyczny: zmienna '{nazwa} nie została wcześniej zadeklarowana, linia: {p.lineno(2)}")
-            raise SyntaxError
+            sys.exit(1)
 
     if len(p) == 8:
         p[0] = [p[3]] + ['jezeli', p[6]]
@@ -42,7 +42,7 @@ def p_wyrazenie(p):
         nazwa = p[2]
         if nazwa in variables:
             print(f"Błąd semantyczny: zmienna '{nazwa}' już zdefiniowana, linia: {p.lineno(2)}")
-            raise SyntaxError
+            sys.exit(1)
         else:
             variables.append(nazwa)
         p[0] = f"{p[1]} {p[2]} {p[3]} {p[4]}"
@@ -53,6 +53,11 @@ def p_wyrazenie(p):
 def p_warunki_logiczne(p):
     '''warunki_logiczne : warunki_logiczne KONIUNKCJA term
                         | warunki_logiczne ALTERNATYWA term
+                        | warunki_logiczne WIEKSZE term
+                        | warunki_logiczne WIEKSZE_ROWNE term
+                        | warunki_logiczne MNIEJSZE term
+                        | warunki_logiczne MNIEJSZE_ROWNE term
+                        | warunki_logiczne POROWNYWALNE term
                         | term'''
     if len(p) == 2:
         p[0] = p[1]
@@ -70,7 +75,7 @@ def p_wyrazenie_arytmetyczne(p):
     else:
         if p[2] == '/' and (p[3] == 0 or p[3] == '0'):
             print(f"Błąd semantyczny: nie mozna dzielic przez 0, linia: {p.lineno(2)}")
-            raise SyntaxError
+            sys.exit(1)
         else:
             p[0] = p[1] + p[2] + p[3]
 
@@ -82,7 +87,7 @@ def p_term(p):
         if isinstance(p[1], str) and p.slice[1].type == 'ID':
             if p[1] not in variables:
                 print(f"Błąd semantyczny: zmienna '{p[1]}' nie została zadeklarowana, linia: {p.lineno(1)}")
-                raise SyntaxError
+                sys.exit(1)
         p[0] = p[1]
     else:
         # len(p) == 3, p[1] == NEGACJA, p[2] == term
@@ -94,12 +99,12 @@ def p_lista_id(p):
     if len(p) == 4:
         if p[3] not in variables:
             print(f"Błąd semantyczny: zmienna '{p[3]}' nie została zadeklarowana, linia: {p.lineno(3)}")
-            raise SyntaxError
+            sys.exit(1)
         p[0] = p[1] + [p[3]]
     else:
         if p[1] not in variables:
             print(f"Błąd semantyczny: zmienna '{p[1]}' nie została zadeklarowana, linia: {p.lineno(1)}")
-            raise SyntaxError
+            sys.exit(1)
         p[0] = [p[1]]
 
 def p_wyrazenie_jezeli_error(p):
@@ -169,6 +174,7 @@ def p_error(p):
         print(f"Błąd składniowy przy tokenie '{p.value}', typ: {p.type}, linia: {p.lineno}")
     else:
         print("Błąd składniowy: nieoczekiwany koniec wejścia")
+    sys.exit(1)
 
 parser = yacc.yacc()
 
@@ -187,7 +193,6 @@ def main():
         data = f.read()
     
     lexer.input(data)
-    # odkomentuj poniżej, jeśli chcesz zobaczyć tokeny
     # while True:
     #     tok = lexer.token()
     #     if not tok:
@@ -204,7 +209,8 @@ def main():
         cpp_generator = CPP(AST)
         cpp_file = cpp_generator.create_cpp_file()
         cpp_generator.save(cpp_file)
-        # cpp_generator.compile("output.cpp")
+        cpp_generator.compile("output.cpp")
+        # cpp_generator.run()
 
 if __name__ == "__main__":
     main()
