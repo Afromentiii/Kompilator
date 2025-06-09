@@ -18,78 +18,82 @@ Rule 1     program -> GLOWNY LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
 Rule 2     wyrazenia -> wyrazenia wyrazenie
 Rule 3     wyrazenia -> epsilon
 Rule 4     wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
-Rule 5     wyrazenie -> WYPISZ lista_id SREDNIK
-Rule 6     wyrazenie -> WCZYTAJ lista_id SREDNIK
-Rule 7     wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
-Rule 8     warunki_logiczne -> warunki_logiczne KONIUNKCJA term
-Rule 9     warunki_logiczne -> warunki_logiczne ALTERNATYWA term
-Rule 10    warunki_logiczne -> term
-Rule 11    wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term
-Rule 12    wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term
-Rule 13    wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term
-Rule 14    wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term
-Rule 15    wyrazenie_arytmetyczne -> term
-Rule 16    term -> ID
-Rule 17    term -> LICZBA
-Rule 18    term -> NEGACJA term
-Rule 19    lista_id -> lista_id PRZECINEK ID
-Rule 20    lista_id -> ID
-Rule 21    wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
-Rule 22    wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
-Rule 23    wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error
-Rule 24    wyrazenie -> JEZELI LEWY_NAWIAS error
-Rule 25    wyrazenie -> JEZELI error
-Rule 26    wyrazenie -> WYPISZ lista_id error
-Rule 27    wyrazenie -> WYPISZ error
-Rule 28    wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error
-Rule 29    wyrazenie -> CALKOWITA ID PRZYPISANIE error
-Rule 30    wyrazenie -> CALKOWITA ID error
-Rule 31    wyrazenie -> CALKOWITA error
-Rule 32    epsilon -> <empty>
+Rule 5     wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
+Rule 6     wyrazenie -> WYPISZ lista_id SREDNIK
+Rule 7     wyrazenie -> WCZYTAJ lista_id SREDNIK
+Rule 8     wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+Rule 9     warunki_logiczne -> warunki_logiczne KONIUNKCJA term
+Rule 10    warunki_logiczne -> warunki_logiczne ALTERNATYWA term
+Rule 11    warunki_logiczne -> term
+Rule 12    wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term
+Rule 13    wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term
+Rule 14    wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term
+Rule 15    wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term
+Rule 16    wyrazenie_arytmetyczne -> term
+Rule 17    term -> ID
+Rule 18    term -> LICZBA
+Rule 19    term -> NEGACJA term
+Rule 20    lista_id -> lista_id PRZECINEK ID
+Rule 21    lista_id -> ID
+Rule 22    wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
+Rule 23    wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
+Rule 24    wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error
+Rule 25    wyrazenie -> JEZELI LEWY_NAWIAS error
+Rule 26    wyrazenie -> JEZELI error
+Rule 27    wyrazenie -> WYPISZ lista_id error
+Rule 28    wyrazenie -> WYPISZ error
+Rule 29    wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error
+Rule 30    wyrazenie -> CALKOWITA ID PRZYPISANIE error
+Rule 31    wyrazenie -> CALKOWITA ID error
+Rule 32    wyrazenie -> CALKOWITA error
+Rule 33    wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error
+Rule 34    wyrazenie -> ID PRZYPISANIE error
+Rule 35    wyrazenie -> ID error
+Rule 36    epsilon -> <empty>
 
 Terminals, with rules where they appear
 
-ALTERNATYWA          : 9
-CALKOWITA            : 4 28 29 30 31
+ALTERNATYWA          : 10
+CALKOWITA            : 4 29 30 31 32
 DOPOKI               : 
-DZIELENIE            : 14
+DZIELENIE            : 15
 GLOWNY               : 1
-ID                   : 4 16 19 20 28 29 30
-JEZELI               : 7 21 22 23 24 25
+ID                   : 4 5 17 20 21 29 30 31 33 34 35
+JEZELI               : 8 22 23 24 25 26
 KOMENTARZ_JEDNOLINIJKOWY : 
 KOMENTARZ_WIELOLINIJKOWY : 
-KONIUNKCJA           : 8
-LEWA_KLAMRA          : 1 7 21
-LEWY_NAWIAS          : 7 21 22 23 24
-LICZBA               : 17 28
-MINUS                : 12
+KONIUNKCJA           : 9
+LEWA_KLAMRA          : 1 8 22
+LEWY_NAWIAS          : 8 22 23 24 25
+LICZBA               : 18 29
+MINUS                : 13
 MNIEJSZE             : 
 MNIEJSZE_ROWNE       : 
-NEGACJA              : 18
-PLUS                 : 11
-PRAWA_KLAMRA         : 1 7
-PRAWY_NAWIAS         : 7 21 22
-PRZECINEK            : 19
-PRZYPISANIE          : 4 28 29
-RAZY                 : 13
+NEGACJA              : 19
+PLUS                 : 12
+PRAWA_KLAMRA         : 1 8
+PRAWY_NAWIAS         : 8 22 23
+PRZECINEK            : 20
+PRZYPISANIE          : 4 5 29 30 33 34
+RAZY                 : 14
 ROWNE                : 
-SREDNIK              : 4 5 6
-WCZYTAJ              : 6
+SREDNIK              : 4 5 6 7
+WCZYTAJ              : 7
 WIEKSZE              : 
 WIEKSZE_ROWNE        : 
-WYPISZ               : 5 26 27
-error                : 21 22 23 24 25 26 27 28 29 30 31
+WYPISZ               : 6 27 28
+error                : 22 23 24 25 26 27 28 29 30 31 32 33 34 35
 
 Nonterminals, with rules where they appear
 
 epsilon              : 3
-lista_id             : 5 6 19 26
+lista_id             : 6 7 20 27
 program              : 0
-term                 : 8 9 10 11 12 13 14 15 18
-warunki_logiczne     : 7 8 9 21 22 23
-wyrazenia            : 1 2 7 21
+term                 : 9 10 11 12 13 14 15 16 19
+warunki_logiczne     : 8 9 10 22 23 24
+wyrazenia            : 1 2 8 22
 wyrazenie            : 2
-wyrazenie_arytmetyczne : 4 11 12 13 14
+wyrazenie_arytmetyczne : 4 5 12 13 14 15 33
 
 Parsing method: LALR
 
@@ -120,13 +124,14 @@ state 3
     (1) program -> GLOWNY LEWA_KLAMRA . wyrazenia PRAWA_KLAMRA
     (2) wyrazenia -> . wyrazenia wyrazenie
     (3) wyrazenia -> . epsilon
-    (32) epsilon -> .
+    (36) epsilon -> .
 
-    PRAWA_KLAMRA    reduce using rule 32 (epsilon -> .)
-    CALKOWITA       reduce using rule 32 (epsilon -> .)
-    WYPISZ          reduce using rule 32 (epsilon -> .)
-    WCZYTAJ         reduce using rule 32 (epsilon -> .)
-    JEZELI          reduce using rule 32 (epsilon -> .)
+    PRAWA_KLAMRA    reduce using rule 36 (epsilon -> .)
+    CALKOWITA       reduce using rule 36 (epsilon -> .)
+    ID              reduce using rule 36 (epsilon -> .)
+    WYPISZ          reduce using rule 36 (epsilon -> .)
+    WCZYTAJ         reduce using rule 36 (epsilon -> .)
+    JEZELI          reduce using rule 36 (epsilon -> .)
 
     wyrazenia                      shift and go to state 4
     epsilon                        shift and go to state 5
@@ -136,26 +141,31 @@ state 4
     (1) program -> GLOWNY LEWA_KLAMRA wyrazenia . PRAWA_KLAMRA
     (2) wyrazenia -> wyrazenia . wyrazenie
     (4) wyrazenie -> . CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
-    (5) wyrazenie -> . WYPISZ lista_id SREDNIK
-    (6) wyrazenie -> . WCZYTAJ lista_id SREDNIK
-    (7) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
-    (21) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
-    (22) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
-    (23) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne error
-    (24) wyrazenie -> . JEZELI LEWY_NAWIAS error
-    (25) wyrazenie -> . JEZELI error
-    (26) wyrazenie -> . WYPISZ lista_id error
-    (27) wyrazenie -> . WYPISZ error
-    (28) wyrazenie -> . CALKOWITA ID PRZYPISANIE LICZBA error
-    (29) wyrazenie -> . CALKOWITA ID PRZYPISANIE error
-    (30) wyrazenie -> . CALKOWITA ID error
-    (31) wyrazenie -> . CALKOWITA error
+    (5) wyrazenie -> . ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
+    (6) wyrazenie -> . WYPISZ lista_id SREDNIK
+    (7) wyrazenie -> . WCZYTAJ lista_id SREDNIK
+    (8) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+    (22) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
+    (23) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
+    (24) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne error
+    (25) wyrazenie -> . JEZELI LEWY_NAWIAS error
+    (26) wyrazenie -> . JEZELI error
+    (27) wyrazenie -> . WYPISZ lista_id error
+    (28) wyrazenie -> . WYPISZ error
+    (29) wyrazenie -> . CALKOWITA ID PRZYPISANIE LICZBA error
+    (30) wyrazenie -> . CALKOWITA ID PRZYPISANIE error
+    (31) wyrazenie -> . CALKOWITA ID error
+    (32) wyrazenie -> . CALKOWITA error
+    (33) wyrazenie -> . ID PRZYPISANIE wyrazenie_arytmetyczne error
+    (34) wyrazenie -> . ID PRZYPISANIE error
+    (35) wyrazenie -> . ID error
 
     PRAWA_KLAMRA    shift and go to state 6
     CALKOWITA       shift and go to state 8
-    WYPISZ          shift and go to state 9
-    WCZYTAJ         shift and go to state 10
-    JEZELI          shift and go to state 11
+    ID              shift and go to state 9
+    WYPISZ          shift and go to state 10
+    WCZYTAJ         shift and go to state 11
+    JEZELI          shift and go to state 12
 
     wyrazenie                      shift and go to state 7
 
@@ -165,6 +175,7 @@ state 5
 
     PRAWA_KLAMRA    reduce using rule 3 (wyrazenia -> epsilon .)
     CALKOWITA       reduce using rule 3 (wyrazenia -> epsilon .)
+    ID              reduce using rule 3 (wyrazenia -> epsilon .)
     WYPISZ          reduce using rule 3 (wyrazenia -> epsilon .)
     WCZYTAJ         reduce using rule 3 (wyrazenia -> epsilon .)
     JEZELI          reduce using rule 3 (wyrazenia -> epsilon .)
@@ -184,6 +195,7 @@ state 7
 
     PRAWA_KLAMRA    reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
     CALKOWITA       reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
+    ID              reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
     WYPISZ          reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
     WCZYTAJ         reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
     JEZELI          reduce using rule 2 (wyrazenia -> wyrazenia wyrazenie .)
@@ -193,649 +205,777 @@ state 7
 state 8
 
     (4) wyrazenie -> CALKOWITA . ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
-    (28) wyrazenie -> CALKOWITA . ID PRZYPISANIE LICZBA error
-    (29) wyrazenie -> CALKOWITA . ID PRZYPISANIE error
-    (30) wyrazenie -> CALKOWITA . ID error
-    (31) wyrazenie -> CALKOWITA . error
+    (29) wyrazenie -> CALKOWITA . ID PRZYPISANIE LICZBA error
+    (30) wyrazenie -> CALKOWITA . ID PRZYPISANIE error
+    (31) wyrazenie -> CALKOWITA . ID error
+    (32) wyrazenie -> CALKOWITA . error
 
-    ID              shift and go to state 12
-    error           shift and go to state 13
+    ID              shift and go to state 13
+    error           shift and go to state 14
 
 
 state 9
 
-    (5) wyrazenie -> WYPISZ . lista_id SREDNIK
-    (26) wyrazenie -> WYPISZ . lista_id error
-    (27) wyrazenie -> WYPISZ . error
-    (19) lista_id -> . lista_id PRZECINEK ID
-    (20) lista_id -> . ID
+    (5) wyrazenie -> ID . PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
+    (33) wyrazenie -> ID . PRZYPISANIE wyrazenie_arytmetyczne error
+    (34) wyrazenie -> ID . PRZYPISANIE error
+    (35) wyrazenie -> ID . error
 
-    error           shift and go to state 15
-    ID              shift and go to state 16
+    PRZYPISANIE     shift and go to state 15
+    error           shift and go to state 16
 
-    lista_id                       shift and go to state 14
 
 state 10
 
-    (6) wyrazenie -> WCZYTAJ . lista_id SREDNIK
-    (19) lista_id -> . lista_id PRZECINEK ID
-    (20) lista_id -> . ID
+    (6) wyrazenie -> WYPISZ . lista_id SREDNIK
+    (27) wyrazenie -> WYPISZ . lista_id error
+    (28) wyrazenie -> WYPISZ . error
+    (20) lista_id -> . lista_id PRZECINEK ID
+    (21) lista_id -> . ID
 
-    ID              shift and go to state 16
+    error           shift and go to state 18
+    ID              shift and go to state 19
 
     lista_id                       shift and go to state 17
 
 state 11
 
-    (7) wyrazenie -> JEZELI . LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
-    (21) wyrazenie -> JEZELI . LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
-    (22) wyrazenie -> JEZELI . LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
-    (23) wyrazenie -> JEZELI . LEWY_NAWIAS warunki_logiczne error
-    (24) wyrazenie -> JEZELI . LEWY_NAWIAS error
-    (25) wyrazenie -> JEZELI . error
+    (7) wyrazenie -> WCZYTAJ . lista_id SREDNIK
+    (20) lista_id -> . lista_id PRZECINEK ID
+    (21) lista_id -> . ID
 
-    LEWY_NAWIAS     shift and go to state 18
-    error           shift and go to state 19
+    ID              shift and go to state 19
 
+    lista_id                       shift and go to state 20
 
 state 12
 
-    (4) wyrazenie -> CALKOWITA ID . PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
-    (28) wyrazenie -> CALKOWITA ID . PRZYPISANIE LICZBA error
-    (29) wyrazenie -> CALKOWITA ID . PRZYPISANIE error
-    (30) wyrazenie -> CALKOWITA ID . error
+    (8) wyrazenie -> JEZELI . LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+    (22) wyrazenie -> JEZELI . LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
+    (23) wyrazenie -> JEZELI . LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
+    (24) wyrazenie -> JEZELI . LEWY_NAWIAS warunki_logiczne error
+    (25) wyrazenie -> JEZELI . LEWY_NAWIAS error
+    (26) wyrazenie -> JEZELI . error
 
-    PRZYPISANIE     shift and go to state 20
-    error           shift and go to state 21
+    LEWY_NAWIAS     shift and go to state 21
+    error           shift and go to state 22
 
 
 state 13
 
-    (31) wyrazenie -> CALKOWITA error .
+    (4) wyrazenie -> CALKOWITA ID . PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
+    (29) wyrazenie -> CALKOWITA ID . PRZYPISANIE LICZBA error
+    (30) wyrazenie -> CALKOWITA ID . PRZYPISANIE error
+    (31) wyrazenie -> CALKOWITA ID . error
 
-    PRAWA_KLAMRA    reduce using rule 31 (wyrazenie -> CALKOWITA error .)
-    CALKOWITA       reduce using rule 31 (wyrazenie -> CALKOWITA error .)
-    WYPISZ          reduce using rule 31 (wyrazenie -> CALKOWITA error .)
-    WCZYTAJ         reduce using rule 31 (wyrazenie -> CALKOWITA error .)
-    JEZELI          reduce using rule 31 (wyrazenie -> CALKOWITA error .)
-    error           reduce using rule 31 (wyrazenie -> CALKOWITA error .)
+    PRZYPISANIE     shift and go to state 23
+    error           shift and go to state 24
 
 
 state 14
 
-    (5) wyrazenie -> WYPISZ lista_id . SREDNIK
-    (26) wyrazenie -> WYPISZ lista_id . error
-    (19) lista_id -> lista_id . PRZECINEK ID
+    (32) wyrazenie -> CALKOWITA error .
 
-    SREDNIK         shift and go to state 22
-    error           shift and go to state 23
-    PRZECINEK       shift and go to state 24
+    PRAWA_KLAMRA    reduce using rule 32 (wyrazenie -> CALKOWITA error .)
+    CALKOWITA       reduce using rule 32 (wyrazenie -> CALKOWITA error .)
+    ID              reduce using rule 32 (wyrazenie -> CALKOWITA error .)
+    WYPISZ          reduce using rule 32 (wyrazenie -> CALKOWITA error .)
+    WCZYTAJ         reduce using rule 32 (wyrazenie -> CALKOWITA error .)
+    JEZELI          reduce using rule 32 (wyrazenie -> CALKOWITA error .)
+    error           reduce using rule 32 (wyrazenie -> CALKOWITA error .)
 
 
 state 15
 
-    (27) wyrazenie -> WYPISZ error .
+    (5) wyrazenie -> ID PRZYPISANIE . wyrazenie_arytmetyczne SREDNIK
+    (33) wyrazenie -> ID PRZYPISANIE . wyrazenie_arytmetyczne error
+    (34) wyrazenie -> ID PRZYPISANIE . error
+    (12) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne PLUS term
+    (13) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne MINUS term
+    (14) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne RAZY term
+    (15) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne DZIELENIE term
+    (16) wyrazenie_arytmetyczne -> . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
 
-    PRAWA_KLAMRA    reduce using rule 27 (wyrazenie -> WYPISZ error .)
-    CALKOWITA       reduce using rule 27 (wyrazenie -> WYPISZ error .)
-    WYPISZ          reduce using rule 27 (wyrazenie -> WYPISZ error .)
-    WCZYTAJ         reduce using rule 27 (wyrazenie -> WYPISZ error .)
-    JEZELI          reduce using rule 27 (wyrazenie -> WYPISZ error .)
-    error           reduce using rule 27 (wyrazenie -> WYPISZ error .)
+    error           shift and go to state 27
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
 
+    wyrazenie_arytmetyczne         shift and go to state 26
+    term                           shift and go to state 28
 
 state 16
 
-    (20) lista_id -> ID .
+    (35) wyrazenie -> ID error .
 
-    SREDNIK         reduce using rule 20 (lista_id -> ID .)
-    error           reduce using rule 20 (lista_id -> ID .)
-    PRZECINEK       reduce using rule 20 (lista_id -> ID .)
+    PRAWA_KLAMRA    reduce using rule 35 (wyrazenie -> ID error .)
+    CALKOWITA       reduce using rule 35 (wyrazenie -> ID error .)
+    ID              reduce using rule 35 (wyrazenie -> ID error .)
+    WYPISZ          reduce using rule 35 (wyrazenie -> ID error .)
+    WCZYTAJ         reduce using rule 35 (wyrazenie -> ID error .)
+    JEZELI          reduce using rule 35 (wyrazenie -> ID error .)
+    error           reduce using rule 35 (wyrazenie -> ID error .)
 
 
 state 17
 
-    (6) wyrazenie -> WCZYTAJ lista_id . SREDNIK
-    (19) lista_id -> lista_id . PRZECINEK ID
+    (6) wyrazenie -> WYPISZ lista_id . SREDNIK
+    (27) wyrazenie -> WYPISZ lista_id . error
+    (20) lista_id -> lista_id . PRZECINEK ID
 
-    SREDNIK         shift and go to state 25
-    PRZECINEK       shift and go to state 24
+    SREDNIK         shift and go to state 31
+    error           shift and go to state 32
+    PRZECINEK       shift and go to state 33
 
 
 state 18
 
-    (7) wyrazenie -> JEZELI LEWY_NAWIAS . warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
-    (21) wyrazenie -> JEZELI LEWY_NAWIAS . warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
-    (22) wyrazenie -> JEZELI LEWY_NAWIAS . warunki_logiczne PRAWY_NAWIAS error
-    (23) wyrazenie -> JEZELI LEWY_NAWIAS . warunki_logiczne error
-    (24) wyrazenie -> JEZELI LEWY_NAWIAS . error
-    (8) warunki_logiczne -> . warunki_logiczne KONIUNKCJA term
-    (9) warunki_logiczne -> . warunki_logiczne ALTERNATYWA term
-    (10) warunki_logiczne -> . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
+    (28) wyrazenie -> WYPISZ error .
 
-    error           shift and go to state 27
-    ID              shift and go to state 29
-    LICZBA          shift and go to state 30
-    NEGACJA         shift and go to state 31
+    PRAWA_KLAMRA    reduce using rule 28 (wyrazenie -> WYPISZ error .)
+    CALKOWITA       reduce using rule 28 (wyrazenie -> WYPISZ error .)
+    ID              reduce using rule 28 (wyrazenie -> WYPISZ error .)
+    WYPISZ          reduce using rule 28 (wyrazenie -> WYPISZ error .)
+    WCZYTAJ         reduce using rule 28 (wyrazenie -> WYPISZ error .)
+    JEZELI          reduce using rule 28 (wyrazenie -> WYPISZ error .)
+    error           reduce using rule 28 (wyrazenie -> WYPISZ error .)
 
-    warunki_logiczne               shift and go to state 26
-    term                           shift and go to state 28
 
 state 19
 
-    (25) wyrazenie -> JEZELI error .
+    (21) lista_id -> ID .
 
-    PRAWA_KLAMRA    reduce using rule 25 (wyrazenie -> JEZELI error .)
-    CALKOWITA       reduce using rule 25 (wyrazenie -> JEZELI error .)
-    WYPISZ          reduce using rule 25 (wyrazenie -> JEZELI error .)
-    WCZYTAJ         reduce using rule 25 (wyrazenie -> JEZELI error .)
-    JEZELI          reduce using rule 25 (wyrazenie -> JEZELI error .)
-    error           reduce using rule 25 (wyrazenie -> JEZELI error .)
+    SREDNIK         reduce using rule 21 (lista_id -> ID .)
+    error           reduce using rule 21 (lista_id -> ID .)
+    PRZECINEK       reduce using rule 21 (lista_id -> ID .)
 
 
 state 20
 
-    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE . wyrazenie_arytmetyczne SREDNIK
-    (28) wyrazenie -> CALKOWITA ID PRZYPISANIE . LICZBA error
-    (29) wyrazenie -> CALKOWITA ID PRZYPISANIE . error
-    (11) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne PLUS term
-    (12) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne MINUS term
-    (13) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne RAZY term
-    (14) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne DZIELENIE term
-    (15) wyrazenie_arytmetyczne -> . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
+    (7) wyrazenie -> WCZYTAJ lista_id . SREDNIK
+    (20) lista_id -> lista_id . PRZECINEK ID
 
-    LICZBA          shift and go to state 33
-    error           shift and go to state 34
-    ID              shift and go to state 29
-    NEGACJA         shift and go to state 31
+    SREDNIK         shift and go to state 34
+    PRZECINEK       shift and go to state 33
 
-    wyrazenie_arytmetyczne         shift and go to state 32
-    term                           shift and go to state 35
 
 state 21
 
-    (30) wyrazenie -> CALKOWITA ID error .
+    (8) wyrazenie -> JEZELI LEWY_NAWIAS . warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+    (22) wyrazenie -> JEZELI LEWY_NAWIAS . warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
+    (23) wyrazenie -> JEZELI LEWY_NAWIAS . warunki_logiczne PRAWY_NAWIAS error
+    (24) wyrazenie -> JEZELI LEWY_NAWIAS . warunki_logiczne error
+    (25) wyrazenie -> JEZELI LEWY_NAWIAS . error
+    (9) warunki_logiczne -> . warunki_logiczne KONIUNKCJA term
+    (10) warunki_logiczne -> . warunki_logiczne ALTERNATYWA term
+    (11) warunki_logiczne -> . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
 
-    PRAWA_KLAMRA    reduce using rule 30 (wyrazenie -> CALKOWITA ID error .)
-    CALKOWITA       reduce using rule 30 (wyrazenie -> CALKOWITA ID error .)
-    WYPISZ          reduce using rule 30 (wyrazenie -> CALKOWITA ID error .)
-    WCZYTAJ         reduce using rule 30 (wyrazenie -> CALKOWITA ID error .)
-    JEZELI          reduce using rule 30 (wyrazenie -> CALKOWITA ID error .)
-    error           reduce using rule 30 (wyrazenie -> CALKOWITA ID error .)
+    error           shift and go to state 36
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
 
+    warunki_logiczne               shift and go to state 35
+    term                           shift and go to state 37
 
 state 22
 
-    (5) wyrazenie -> WYPISZ lista_id SREDNIK .
+    (26) wyrazenie -> JEZELI error .
 
-    PRAWA_KLAMRA    reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
-    CALKOWITA       reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
-    WYPISZ          reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
-    WCZYTAJ         reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
-    JEZELI          reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
-    error           reduce using rule 5 (wyrazenie -> WYPISZ lista_id SREDNIK .)
+    PRAWA_KLAMRA    reduce using rule 26 (wyrazenie -> JEZELI error .)
+    CALKOWITA       reduce using rule 26 (wyrazenie -> JEZELI error .)
+    ID              reduce using rule 26 (wyrazenie -> JEZELI error .)
+    WYPISZ          reduce using rule 26 (wyrazenie -> JEZELI error .)
+    WCZYTAJ         reduce using rule 26 (wyrazenie -> JEZELI error .)
+    JEZELI          reduce using rule 26 (wyrazenie -> JEZELI error .)
+    error           reduce using rule 26 (wyrazenie -> JEZELI error .)
 
 
 state 23
 
-    (26) wyrazenie -> WYPISZ lista_id error .
+    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE . wyrazenie_arytmetyczne SREDNIK
+    (29) wyrazenie -> CALKOWITA ID PRZYPISANIE . LICZBA error
+    (30) wyrazenie -> CALKOWITA ID PRZYPISANIE . error
+    (12) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne PLUS term
+    (13) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne MINUS term
+    (14) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne RAZY term
+    (15) wyrazenie_arytmetyczne -> . wyrazenie_arytmetyczne DZIELENIE term
+    (16) wyrazenie_arytmetyczne -> . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
 
-    PRAWA_KLAMRA    reduce using rule 26 (wyrazenie -> WYPISZ lista_id error .)
-    CALKOWITA       reduce using rule 26 (wyrazenie -> WYPISZ lista_id error .)
-    WYPISZ          reduce using rule 26 (wyrazenie -> WYPISZ lista_id error .)
-    WCZYTAJ         reduce using rule 26 (wyrazenie -> WYPISZ lista_id error .)
-    JEZELI          reduce using rule 26 (wyrazenie -> WYPISZ lista_id error .)
-    error           reduce using rule 26 (wyrazenie -> WYPISZ lista_id error .)
+    LICZBA          shift and go to state 39
+    error           shift and go to state 40
+    ID              shift and go to state 25
+    NEGACJA         shift and go to state 30
 
+    wyrazenie_arytmetyczne         shift and go to state 38
+    term                           shift and go to state 28
 
 state 24
 
-    (19) lista_id -> lista_id PRZECINEK . ID
+    (31) wyrazenie -> CALKOWITA ID error .
 
-    ID              shift and go to state 36
+    PRAWA_KLAMRA    reduce using rule 31 (wyrazenie -> CALKOWITA ID error .)
+    CALKOWITA       reduce using rule 31 (wyrazenie -> CALKOWITA ID error .)
+    ID              reduce using rule 31 (wyrazenie -> CALKOWITA ID error .)
+    WYPISZ          reduce using rule 31 (wyrazenie -> CALKOWITA ID error .)
+    WCZYTAJ         reduce using rule 31 (wyrazenie -> CALKOWITA ID error .)
+    JEZELI          reduce using rule 31 (wyrazenie -> CALKOWITA ID error .)
+    error           reduce using rule 31 (wyrazenie -> CALKOWITA ID error .)
 
 
 state 25
 
-    (6) wyrazenie -> WCZYTAJ lista_id SREDNIK .
+    (17) term -> ID .
 
-    PRAWA_KLAMRA    reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
-    CALKOWITA       reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
-    WYPISZ          reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
-    WCZYTAJ         reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
-    JEZELI          reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
-    error           reduce using rule 6 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    SREDNIK         reduce using rule 17 (term -> ID .)
+    error           reduce using rule 17 (term -> ID .)
+    PLUS            reduce using rule 17 (term -> ID .)
+    MINUS           reduce using rule 17 (term -> ID .)
+    RAZY            reduce using rule 17 (term -> ID .)
+    DZIELENIE       reduce using rule 17 (term -> ID .)
+    PRAWY_NAWIAS    reduce using rule 17 (term -> ID .)
+    KONIUNKCJA      reduce using rule 17 (term -> ID .)
+    ALTERNATYWA     reduce using rule 17 (term -> ID .)
 
 
 state 26
 
-    (7) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne . PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
-    (21) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne . PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
-    (22) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne . PRAWY_NAWIAS error
-    (23) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne . error
-    (8) warunki_logiczne -> warunki_logiczne . KONIUNKCJA term
-    (9) warunki_logiczne -> warunki_logiczne . ALTERNATYWA term
+    (5) wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne . SREDNIK
+    (33) wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne . error
+    (12) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . PLUS term
+    (13) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . MINUS term
+    (14) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . RAZY term
+    (15) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . DZIELENIE term
 
-    PRAWY_NAWIAS    shift and go to state 37
-    error           shift and go to state 38
-    KONIUNKCJA      shift and go to state 39
-    ALTERNATYWA     shift and go to state 40
-
-
-state 27
-
-    (24) wyrazenie -> JEZELI LEWY_NAWIAS error .
-
-    PRAWA_KLAMRA    reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
-    CALKOWITA       reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
-    WYPISZ          reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
-    WCZYTAJ         reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
-    JEZELI          reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
-    error           reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
-
-
-state 28
-
-    (10) warunki_logiczne -> term .
-
-    PRAWY_NAWIAS    reduce using rule 10 (warunki_logiczne -> term .)
-    error           reduce using rule 10 (warunki_logiczne -> term .)
-    KONIUNKCJA      reduce using rule 10 (warunki_logiczne -> term .)
-    ALTERNATYWA     reduce using rule 10 (warunki_logiczne -> term .)
-
-
-state 29
-
-    (16) term -> ID .
-
-    PRAWY_NAWIAS    reduce using rule 16 (term -> ID .)
-    error           reduce using rule 16 (term -> ID .)
-    KONIUNKCJA      reduce using rule 16 (term -> ID .)
-    ALTERNATYWA     reduce using rule 16 (term -> ID .)
-    SREDNIK         reduce using rule 16 (term -> ID .)
-    PLUS            reduce using rule 16 (term -> ID .)
-    MINUS           reduce using rule 16 (term -> ID .)
-    RAZY            reduce using rule 16 (term -> ID .)
-    DZIELENIE       reduce using rule 16 (term -> ID .)
-
-
-state 30
-
-    (17) term -> LICZBA .
-
-    PRAWY_NAWIAS    reduce using rule 17 (term -> LICZBA .)
-    error           reduce using rule 17 (term -> LICZBA .)
-    KONIUNKCJA      reduce using rule 17 (term -> LICZBA .)
-    ALTERNATYWA     reduce using rule 17 (term -> LICZBA .)
-    SREDNIK         reduce using rule 17 (term -> LICZBA .)
-    PLUS            reduce using rule 17 (term -> LICZBA .)
-    MINUS           reduce using rule 17 (term -> LICZBA .)
-    RAZY            reduce using rule 17 (term -> LICZBA .)
-    DZIELENIE       reduce using rule 17 (term -> LICZBA .)
-
-
-state 31
-
-    (18) term -> NEGACJA . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
-
-    ID              shift and go to state 29
-    LICZBA          shift and go to state 30
-    NEGACJA         shift and go to state 31
-
-    term                           shift and go to state 41
-
-state 32
-
-    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne . SREDNIK
-    (11) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . PLUS term
-    (12) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . MINUS term
-    (13) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . RAZY term
-    (14) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . DZIELENIE term
-
-    SREDNIK         shift and go to state 42
+    SREDNIK         shift and go to state 41
+    error           shift and go to state 42
     PLUS            shift and go to state 43
     MINUS           shift and go to state 44
     RAZY            shift and go to state 45
     DZIELENIE       shift and go to state 46
 
 
+state 27
+
+    (34) wyrazenie -> ID PRZYPISANIE error .
+
+    PRAWA_KLAMRA    reduce using rule 34 (wyrazenie -> ID PRZYPISANIE error .)
+    CALKOWITA       reduce using rule 34 (wyrazenie -> ID PRZYPISANIE error .)
+    ID              reduce using rule 34 (wyrazenie -> ID PRZYPISANIE error .)
+    WYPISZ          reduce using rule 34 (wyrazenie -> ID PRZYPISANIE error .)
+    WCZYTAJ         reduce using rule 34 (wyrazenie -> ID PRZYPISANIE error .)
+    JEZELI          reduce using rule 34 (wyrazenie -> ID PRZYPISANIE error .)
+    error           reduce using rule 34 (wyrazenie -> ID PRZYPISANIE error .)
+
+
+state 28
+
+    (16) wyrazenie_arytmetyczne -> term .
+
+    SREDNIK         reduce using rule 16 (wyrazenie_arytmetyczne -> term .)
+    error           reduce using rule 16 (wyrazenie_arytmetyczne -> term .)
+    PLUS            reduce using rule 16 (wyrazenie_arytmetyczne -> term .)
+    MINUS           reduce using rule 16 (wyrazenie_arytmetyczne -> term .)
+    RAZY            reduce using rule 16 (wyrazenie_arytmetyczne -> term .)
+    DZIELENIE       reduce using rule 16 (wyrazenie_arytmetyczne -> term .)
+
+
+state 29
+
+    (18) term -> LICZBA .
+
+    SREDNIK         reduce using rule 18 (term -> LICZBA .)
+    error           reduce using rule 18 (term -> LICZBA .)
+    PLUS            reduce using rule 18 (term -> LICZBA .)
+    MINUS           reduce using rule 18 (term -> LICZBA .)
+    RAZY            reduce using rule 18 (term -> LICZBA .)
+    DZIELENIE       reduce using rule 18 (term -> LICZBA .)
+    PRAWY_NAWIAS    reduce using rule 18 (term -> LICZBA .)
+    KONIUNKCJA      reduce using rule 18 (term -> LICZBA .)
+    ALTERNATYWA     reduce using rule 18 (term -> LICZBA .)
+
+
+state 30
+
+    (19) term -> NEGACJA . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
+
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
+
+    term                           shift and go to state 47
+
+state 31
+
+    (6) wyrazenie -> WYPISZ lista_id SREDNIK .
+
+    PRAWA_KLAMRA    reduce using rule 6 (wyrazenie -> WYPISZ lista_id SREDNIK .)
+    CALKOWITA       reduce using rule 6 (wyrazenie -> WYPISZ lista_id SREDNIK .)
+    ID              reduce using rule 6 (wyrazenie -> WYPISZ lista_id SREDNIK .)
+    WYPISZ          reduce using rule 6 (wyrazenie -> WYPISZ lista_id SREDNIK .)
+    WCZYTAJ         reduce using rule 6 (wyrazenie -> WYPISZ lista_id SREDNIK .)
+    JEZELI          reduce using rule 6 (wyrazenie -> WYPISZ lista_id SREDNIK .)
+    error           reduce using rule 6 (wyrazenie -> WYPISZ lista_id SREDNIK .)
+
+
+state 32
+
+    (27) wyrazenie -> WYPISZ lista_id error .
+
+    PRAWA_KLAMRA    reduce using rule 27 (wyrazenie -> WYPISZ lista_id error .)
+    CALKOWITA       reduce using rule 27 (wyrazenie -> WYPISZ lista_id error .)
+    ID              reduce using rule 27 (wyrazenie -> WYPISZ lista_id error .)
+    WYPISZ          reduce using rule 27 (wyrazenie -> WYPISZ lista_id error .)
+    WCZYTAJ         reduce using rule 27 (wyrazenie -> WYPISZ lista_id error .)
+    JEZELI          reduce using rule 27 (wyrazenie -> WYPISZ lista_id error .)
+    error           reduce using rule 27 (wyrazenie -> WYPISZ lista_id error .)
+
+
 state 33
 
-    (28) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA . error
-    (17) term -> LICZBA .
+    (20) lista_id -> lista_id PRZECINEK . ID
 
-    error           shift and go to state 47
-    SREDNIK         reduce using rule 17 (term -> LICZBA .)
-    PLUS            reduce using rule 17 (term -> LICZBA .)
-    MINUS           reduce using rule 17 (term -> LICZBA .)
-    RAZY            reduce using rule 17 (term -> LICZBA .)
-    DZIELENIE       reduce using rule 17 (term -> LICZBA .)
+    ID              shift and go to state 48
 
 
 state 34
 
-    (29) wyrazenie -> CALKOWITA ID PRZYPISANIE error .
+    (7) wyrazenie -> WCZYTAJ lista_id SREDNIK .
 
-    PRAWA_KLAMRA    reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
-    CALKOWITA       reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
-    WYPISZ          reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
-    WCZYTAJ         reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
-    JEZELI          reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
-    error           reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    PRAWA_KLAMRA    reduce using rule 7 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    CALKOWITA       reduce using rule 7 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    ID              reduce using rule 7 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    WYPISZ          reduce using rule 7 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    WCZYTAJ         reduce using rule 7 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    JEZELI          reduce using rule 7 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
+    error           reduce using rule 7 (wyrazenie -> WCZYTAJ lista_id SREDNIK .)
 
 
 state 35
 
-    (15) wyrazenie_arytmetyczne -> term .
+    (8) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne . PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+    (22) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne . PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
+    (23) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne . PRAWY_NAWIAS error
+    (24) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne . error
+    (9) warunki_logiczne -> warunki_logiczne . KONIUNKCJA term
+    (10) warunki_logiczne -> warunki_logiczne . ALTERNATYWA term
 
-    SREDNIK         reduce using rule 15 (wyrazenie_arytmetyczne -> term .)
-    PLUS            reduce using rule 15 (wyrazenie_arytmetyczne -> term .)
-    MINUS           reduce using rule 15 (wyrazenie_arytmetyczne -> term .)
-    RAZY            reduce using rule 15 (wyrazenie_arytmetyczne -> term .)
-    DZIELENIE       reduce using rule 15 (wyrazenie_arytmetyczne -> term .)
+    PRAWY_NAWIAS    shift and go to state 49
+    error           shift and go to state 50
+    KONIUNKCJA      shift and go to state 51
+    ALTERNATYWA     shift and go to state 52
 
 
 state 36
 
-    (19) lista_id -> lista_id PRZECINEK ID .
+    (25) wyrazenie -> JEZELI LEWY_NAWIAS error .
 
-    SREDNIK         reduce using rule 19 (lista_id -> lista_id PRZECINEK ID .)
-    error           reduce using rule 19 (lista_id -> lista_id PRZECINEK ID .)
-    PRZECINEK       reduce using rule 19 (lista_id -> lista_id PRZECINEK ID .)
+    PRAWA_KLAMRA    reduce using rule 25 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
+    CALKOWITA       reduce using rule 25 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
+    ID              reduce using rule 25 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
+    WYPISZ          reduce using rule 25 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
+    WCZYTAJ         reduce using rule 25 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
+    JEZELI          reduce using rule 25 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
+    error           reduce using rule 25 (wyrazenie -> JEZELI LEWY_NAWIAS error .)
 
 
 state 37
 
-    (7) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS . LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
-    (21) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS . LEWA_KLAMRA wyrazenia error
-    (22) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS . error
+    (11) warunki_logiczne -> term .
 
-    LEWA_KLAMRA     shift and go to state 48
-    error           shift and go to state 49
+    PRAWY_NAWIAS    reduce using rule 11 (warunki_logiczne -> term .)
+    error           reduce using rule 11 (warunki_logiczne -> term .)
+    KONIUNKCJA      reduce using rule 11 (warunki_logiczne -> term .)
+    ALTERNATYWA     reduce using rule 11 (warunki_logiczne -> term .)
 
 
 state 38
 
-    (23) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .
+    (4) wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne . SREDNIK
+    (12) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . PLUS term
+    (13) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . MINUS term
+    (14) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . RAZY term
+    (15) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne . DZIELENIE term
 
-    PRAWA_KLAMRA    reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
-    CALKOWITA       reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
-    WYPISZ          reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
-    WCZYTAJ         reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
-    JEZELI          reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
-    error           reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
+    SREDNIK         shift and go to state 53
+    PLUS            shift and go to state 43
+    MINUS           shift and go to state 44
+    RAZY            shift and go to state 45
+    DZIELENIE       shift and go to state 46
 
 
 state 39
 
-    (8) warunki_logiczne -> warunki_logiczne KONIUNKCJA . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
+    (29) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA . error
+    (18) term -> LICZBA .
 
-    ID              shift and go to state 29
-    LICZBA          shift and go to state 30
-    NEGACJA         shift and go to state 31
+    error           shift and go to state 54
+    SREDNIK         reduce using rule 18 (term -> LICZBA .)
+    PLUS            reduce using rule 18 (term -> LICZBA .)
+    MINUS           reduce using rule 18 (term -> LICZBA .)
+    RAZY            reduce using rule 18 (term -> LICZBA .)
+    DZIELENIE       reduce using rule 18 (term -> LICZBA .)
 
-    term                           shift and go to state 50
 
 state 40
 
-    (9) warunki_logiczne -> warunki_logiczne ALTERNATYWA . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
+    (30) wyrazenie -> CALKOWITA ID PRZYPISANIE error .
 
-    ID              shift and go to state 29
-    LICZBA          shift and go to state 30
-    NEGACJA         shift and go to state 31
+    PRAWA_KLAMRA    reduce using rule 30 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    CALKOWITA       reduce using rule 30 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    ID              reduce using rule 30 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    WYPISZ          reduce using rule 30 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    WCZYTAJ         reduce using rule 30 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    JEZELI          reduce using rule 30 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
+    error           reduce using rule 30 (wyrazenie -> CALKOWITA ID PRZYPISANIE error .)
 
-    term                           shift and go to state 51
 
 state 41
 
-    (18) term -> NEGACJA term .
+    (5) wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .
 
-    PRAWY_NAWIAS    reduce using rule 18 (term -> NEGACJA term .)
-    error           reduce using rule 18 (term -> NEGACJA term .)
-    KONIUNKCJA      reduce using rule 18 (term -> NEGACJA term .)
-    ALTERNATYWA     reduce using rule 18 (term -> NEGACJA term .)
-    SREDNIK         reduce using rule 18 (term -> NEGACJA term .)
-    PLUS            reduce using rule 18 (term -> NEGACJA term .)
-    MINUS           reduce using rule 18 (term -> NEGACJA term .)
-    RAZY            reduce using rule 18 (term -> NEGACJA term .)
-    DZIELENIE       reduce using rule 18 (term -> NEGACJA term .)
+    PRAWA_KLAMRA    reduce using rule 5 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
+    CALKOWITA       reduce using rule 5 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
+    ID              reduce using rule 5 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
+    WYPISZ          reduce using rule 5 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
+    WCZYTAJ         reduce using rule 5 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
+    JEZELI          reduce using rule 5 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
+    error           reduce using rule 5 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
 
 
 state 42
+
+    (33) wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error .
+
+    PRAWA_KLAMRA    reduce using rule 33 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error .)
+    CALKOWITA       reduce using rule 33 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error .)
+    ID              reduce using rule 33 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error .)
+    WYPISZ          reduce using rule 33 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error .)
+    WCZYTAJ         reduce using rule 33 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error .)
+    JEZELI          reduce using rule 33 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error .)
+    error           reduce using rule 33 (wyrazenie -> ID PRZYPISANIE wyrazenie_arytmetyczne error .)
+
+
+state 43
+
+    (12) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
+
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
+
+    term                           shift and go to state 55
+
+state 44
+
+    (13) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
+
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
+
+    term                           shift and go to state 56
+
+state 45
+
+    (14) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
+
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
+
+    term                           shift and go to state 57
+
+state 46
+
+    (15) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
+
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
+
+    term                           shift and go to state 58
+
+state 47
+
+    (19) term -> NEGACJA term .
+
+    SREDNIK         reduce using rule 19 (term -> NEGACJA term .)
+    error           reduce using rule 19 (term -> NEGACJA term .)
+    PLUS            reduce using rule 19 (term -> NEGACJA term .)
+    MINUS           reduce using rule 19 (term -> NEGACJA term .)
+    RAZY            reduce using rule 19 (term -> NEGACJA term .)
+    DZIELENIE       reduce using rule 19 (term -> NEGACJA term .)
+    PRAWY_NAWIAS    reduce using rule 19 (term -> NEGACJA term .)
+    KONIUNKCJA      reduce using rule 19 (term -> NEGACJA term .)
+    ALTERNATYWA     reduce using rule 19 (term -> NEGACJA term .)
+
+
+state 48
+
+    (20) lista_id -> lista_id PRZECINEK ID .
+
+    SREDNIK         reduce using rule 20 (lista_id -> lista_id PRZECINEK ID .)
+    error           reduce using rule 20 (lista_id -> lista_id PRZECINEK ID .)
+    PRZECINEK       reduce using rule 20 (lista_id -> lista_id PRZECINEK ID .)
+
+
+state 49
+
+    (8) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS . LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+    (22) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS . LEWA_KLAMRA wyrazenia error
+    (23) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS . error
+
+    LEWA_KLAMRA     shift and go to state 59
+    error           shift and go to state 60
+
+
+state 50
+
+    (24) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .
+
+    PRAWA_KLAMRA    reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
+    CALKOWITA       reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
+    ID              reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
+    WYPISZ          reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
+    WCZYTAJ         reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
+    JEZELI          reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
+    error           reduce using rule 24 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne error .)
+
+
+state 51
+
+    (9) warunki_logiczne -> warunki_logiczne KONIUNKCJA . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
+
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
+
+    term                           shift and go to state 61
+
+state 52
+
+    (10) warunki_logiczne -> warunki_logiczne ALTERNATYWA . term
+    (17) term -> . ID
+    (18) term -> . LICZBA
+    (19) term -> . NEGACJA term
+
+    ID              shift and go to state 25
+    LICZBA          shift and go to state 29
+    NEGACJA         shift and go to state 30
+
+    term                           shift and go to state 62
+
+state 53
 
     (4) wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .
 
     PRAWA_KLAMRA    reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
     CALKOWITA       reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
+    ID              reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
     WYPISZ          reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
     WCZYTAJ         reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
     JEZELI          reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
     error           reduce using rule 4 (wyrazenie -> CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK .)
 
 
-state 43
-
-    (11) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
-
-    ID              shift and go to state 29
-    LICZBA          shift and go to state 30
-    NEGACJA         shift and go to state 31
-
-    term                           shift and go to state 52
-
-state 44
-
-    (12) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
-
-    ID              shift and go to state 29
-    LICZBA          shift and go to state 30
-    NEGACJA         shift and go to state 31
-
-    term                           shift and go to state 53
-
-state 45
-
-    (13) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
-
-    ID              shift and go to state 29
-    LICZBA          shift and go to state 30
-    NEGACJA         shift and go to state 31
-
-    term                           shift and go to state 54
-
-state 46
-
-    (14) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE . term
-    (16) term -> . ID
-    (17) term -> . LICZBA
-    (18) term -> . NEGACJA term
-
-    ID              shift and go to state 29
-    LICZBA          shift and go to state 30
-    NEGACJA         shift and go to state 31
-
-    term                           shift and go to state 55
-
-state 47
-
-    (28) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .
-
-    PRAWA_KLAMRA    reduce using rule 28 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
-    CALKOWITA       reduce using rule 28 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
-    WYPISZ          reduce using rule 28 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
-    WCZYTAJ         reduce using rule 28 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
-    JEZELI          reduce using rule 28 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
-    error           reduce using rule 28 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
-
-
-state 48
-
-    (7) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA . wyrazenia PRAWA_KLAMRA
-    (21) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA . wyrazenia error
-    (2) wyrazenia -> . wyrazenia wyrazenie
-    (3) wyrazenia -> . epsilon
-    (32) epsilon -> .
-
-    PRAWA_KLAMRA    reduce using rule 32 (epsilon -> .)
-    error           reduce using rule 32 (epsilon -> .)
-    CALKOWITA       reduce using rule 32 (epsilon -> .)
-    WYPISZ          reduce using rule 32 (epsilon -> .)
-    WCZYTAJ         reduce using rule 32 (epsilon -> .)
-    JEZELI          reduce using rule 32 (epsilon -> .)
-
-    wyrazenia                      shift and go to state 56
-    epsilon                        shift and go to state 5
-
-state 49
-
-    (22) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .
-
-    PRAWA_KLAMRA    reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
-    CALKOWITA       reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
-    WYPISZ          reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
-    WCZYTAJ         reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
-    JEZELI          reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
-    error           reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
-
-
-state 50
-
-    (8) warunki_logiczne -> warunki_logiczne KONIUNKCJA term .
-
-    PRAWY_NAWIAS    reduce using rule 8 (warunki_logiczne -> warunki_logiczne KONIUNKCJA term .)
-    error           reduce using rule 8 (warunki_logiczne -> warunki_logiczne KONIUNKCJA term .)
-    KONIUNKCJA      reduce using rule 8 (warunki_logiczne -> warunki_logiczne KONIUNKCJA term .)
-    ALTERNATYWA     reduce using rule 8 (warunki_logiczne -> warunki_logiczne KONIUNKCJA term .)
-
-
-state 51
-
-    (9) warunki_logiczne -> warunki_logiczne ALTERNATYWA term .
-
-    PRAWY_NAWIAS    reduce using rule 9 (warunki_logiczne -> warunki_logiczne ALTERNATYWA term .)
-    error           reduce using rule 9 (warunki_logiczne -> warunki_logiczne ALTERNATYWA term .)
-    KONIUNKCJA      reduce using rule 9 (warunki_logiczne -> warunki_logiczne ALTERNATYWA term .)
-    ALTERNATYWA     reduce using rule 9 (warunki_logiczne -> warunki_logiczne ALTERNATYWA term .)
-
-
-state 52
-
-    (11) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .
-
-    SREDNIK         reduce using rule 11 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
-    PLUS            reduce using rule 11 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
-    MINUS           reduce using rule 11 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
-    RAZY            reduce using rule 11 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
-    DZIELENIE       reduce using rule 11 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
-
-
-state 53
-
-    (12) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .
-
-    SREDNIK         reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
-    PLUS            reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
-    MINUS           reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
-    RAZY            reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
-    DZIELENIE       reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
-
-
 state 54
 
-    (13) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .
+    (29) wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .
 
-    SREDNIK         reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
-    PLUS            reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
-    MINUS           reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
-    RAZY            reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
-    DZIELENIE       reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
+    PRAWA_KLAMRA    reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    CALKOWITA       reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    ID              reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    WYPISZ          reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    WCZYTAJ         reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    JEZELI          reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
+    error           reduce using rule 29 (wyrazenie -> CALKOWITA ID PRZYPISANIE LICZBA error .)
 
 
 state 55
 
-    (14) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .
+    (12) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .
 
-    SREDNIK         reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
-    PLUS            reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
-    MINUS           reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
-    RAZY            reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
-    DZIELENIE       reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
+    SREDNIK         reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
+    error           reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
+    PLUS            reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
+    MINUS           reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
+    RAZY            reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
+    DZIELENIE       reduce using rule 12 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne PLUS term .)
 
 
 state 56
 
-    (7) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia . PRAWA_KLAMRA
-    (21) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia . error
-    (2) wyrazenia -> wyrazenia . wyrazenie
-    (4) wyrazenie -> . CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
-    (5) wyrazenie -> . WYPISZ lista_id SREDNIK
-    (6) wyrazenie -> . WCZYTAJ lista_id SREDNIK
-    (7) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
-    (21) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
-    (22) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
-    (23) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne error
-    (24) wyrazenie -> . JEZELI LEWY_NAWIAS error
-    (25) wyrazenie -> . JEZELI error
-    (26) wyrazenie -> . WYPISZ lista_id error
-    (27) wyrazenie -> . WYPISZ error
-    (28) wyrazenie -> . CALKOWITA ID PRZYPISANIE LICZBA error
-    (29) wyrazenie -> . CALKOWITA ID PRZYPISANIE error
-    (30) wyrazenie -> . CALKOWITA ID error
-    (31) wyrazenie -> . CALKOWITA error
+    (13) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .
 
-    PRAWA_KLAMRA    shift and go to state 57
-    error           shift and go to state 58
-    CALKOWITA       shift and go to state 8
-    WYPISZ          shift and go to state 9
-    WCZYTAJ         shift and go to state 10
-    JEZELI          shift and go to state 11
+    SREDNIK         reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
+    error           reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
+    PLUS            reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
+    MINUS           reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
+    RAZY            reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
+    DZIELENIE       reduce using rule 13 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne MINUS term .)
 
-    wyrazenie                      shift and go to state 7
 
 state 57
 
-    (7) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .
+    (14) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .
 
-    PRAWA_KLAMRA    reduce using rule 7 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
-    CALKOWITA       reduce using rule 7 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
-    WYPISZ          reduce using rule 7 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
-    WCZYTAJ         reduce using rule 7 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
-    JEZELI          reduce using rule 7 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
-    error           reduce using rule 7 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+    SREDNIK         reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
+    error           reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
+    PLUS            reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
+    MINUS           reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
+    RAZY            reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
+    DZIELENIE       reduce using rule 14 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne RAZY term .)
 
 
 state 58
 
-    (21) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .
+    (15) wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .
 
-    PRAWA_KLAMRA    reduce using rule 21 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
-    CALKOWITA       reduce using rule 21 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
-    WYPISZ          reduce using rule 21 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
-    WCZYTAJ         reduce using rule 21 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
-    JEZELI          reduce using rule 21 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
-    error           reduce using rule 21 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
+    SREDNIK         reduce using rule 15 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
+    error           reduce using rule 15 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
+    PLUS            reduce using rule 15 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
+    MINUS           reduce using rule 15 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
+    RAZY            reduce using rule 15 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
+    DZIELENIE       reduce using rule 15 (wyrazenie_arytmetyczne -> wyrazenie_arytmetyczne DZIELENIE term .)
+
+
+state 59
+
+    (8) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA . wyrazenia PRAWA_KLAMRA
+    (22) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA . wyrazenia error
+    (2) wyrazenia -> . wyrazenia wyrazenie
+    (3) wyrazenia -> . epsilon
+    (36) epsilon -> .
+
+    PRAWA_KLAMRA    reduce using rule 36 (epsilon -> .)
+    error           reduce using rule 36 (epsilon -> .)
+    CALKOWITA       reduce using rule 36 (epsilon -> .)
+    ID              reduce using rule 36 (epsilon -> .)
+    WYPISZ          reduce using rule 36 (epsilon -> .)
+    WCZYTAJ         reduce using rule 36 (epsilon -> .)
+    JEZELI          reduce using rule 36 (epsilon -> .)
+
+    wyrazenia                      shift and go to state 63
+    epsilon                        shift and go to state 5
+
+state 60
+
+    (23) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .
+
+    PRAWA_KLAMRA    reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
+    CALKOWITA       reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
+    ID              reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
+    WYPISZ          reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
+    WCZYTAJ         reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
+    JEZELI          reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
+    error           reduce using rule 23 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error .)
+
+
+state 61
+
+    (9) warunki_logiczne -> warunki_logiczne KONIUNKCJA term .
+
+    PRAWY_NAWIAS    reduce using rule 9 (warunki_logiczne -> warunki_logiczne KONIUNKCJA term .)
+    error           reduce using rule 9 (warunki_logiczne -> warunki_logiczne KONIUNKCJA term .)
+    KONIUNKCJA      reduce using rule 9 (warunki_logiczne -> warunki_logiczne KONIUNKCJA term .)
+    ALTERNATYWA     reduce using rule 9 (warunki_logiczne -> warunki_logiczne KONIUNKCJA term .)
+
+
+state 62
+
+    (10) warunki_logiczne -> warunki_logiczne ALTERNATYWA term .
+
+    PRAWY_NAWIAS    reduce using rule 10 (warunki_logiczne -> warunki_logiczne ALTERNATYWA term .)
+    error           reduce using rule 10 (warunki_logiczne -> warunki_logiczne ALTERNATYWA term .)
+    KONIUNKCJA      reduce using rule 10 (warunki_logiczne -> warunki_logiczne ALTERNATYWA term .)
+    ALTERNATYWA     reduce using rule 10 (warunki_logiczne -> warunki_logiczne ALTERNATYWA term .)
+
+
+state 63
+
+    (8) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia . PRAWA_KLAMRA
+    (22) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia . error
+    (2) wyrazenia -> wyrazenia . wyrazenie
+    (4) wyrazenie -> . CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
+    (5) wyrazenie -> . ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
+    (6) wyrazenie -> . WYPISZ lista_id SREDNIK
+    (7) wyrazenie -> . WCZYTAJ lista_id SREDNIK
+    (8) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
+    (22) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error
+    (23) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS error
+    (24) wyrazenie -> . JEZELI LEWY_NAWIAS warunki_logiczne error
+    (25) wyrazenie -> . JEZELI LEWY_NAWIAS error
+    (26) wyrazenie -> . JEZELI error
+    (27) wyrazenie -> . WYPISZ lista_id error
+    (28) wyrazenie -> . WYPISZ error
+    (29) wyrazenie -> . CALKOWITA ID PRZYPISANIE LICZBA error
+    (30) wyrazenie -> . CALKOWITA ID PRZYPISANIE error
+    (31) wyrazenie -> . CALKOWITA ID error
+    (32) wyrazenie -> . CALKOWITA error
+    (33) wyrazenie -> . ID PRZYPISANIE wyrazenie_arytmetyczne error
+    (34) wyrazenie -> . ID PRZYPISANIE error
+    (35) wyrazenie -> . ID error
+
+    PRAWA_KLAMRA    shift and go to state 64
+    error           shift and go to state 65
+    CALKOWITA       shift and go to state 8
+    ID              shift and go to state 9
+    WYPISZ          shift and go to state 10
+    WCZYTAJ         shift and go to state 11
+    JEZELI          shift and go to state 12
+
+    wyrazenie                      shift and go to state 7
+
+state 64
+
+    (8) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .
+
+    PRAWA_KLAMRA    reduce using rule 8 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+    CALKOWITA       reduce using rule 8 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+    ID              reduce using rule 8 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+    WYPISZ          reduce using rule 8 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+    WCZYTAJ         reduce using rule 8 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+    JEZELI          reduce using rule 8 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+    error           reduce using rule 8 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA .)
+
+
+state 65
+
+    (22) wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .
+
+    PRAWA_KLAMRA    reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
+    CALKOWITA       reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
+    ID              reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
+    WYPISZ          reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
+    WCZYTAJ         reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
+    JEZELI          reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
+    error           reduce using rule 22 (wyrazenie -> JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia error .)
 

@@ -23,11 +23,20 @@ def p_wyrazenia(p):
     
 def p_wyrazenie(p):
     '''wyrazenie : CALKOWITA ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
+                 | ID PRZYPISANIE wyrazenie_arytmetyczne SREDNIK
                  | WYPISZ lista_id SREDNIK
                  | WCZYTAJ lista_id SREDNIK
                  | JEZELI LEWY_NAWIAS warunki_logiczne PRAWY_NAWIAS LEWA_KLAMRA wyrazenia PRAWA_KLAMRA
                  
                  '''
+    if len(p) == 5:
+        nazwa = p[1]
+        if nazwa in variables:
+            p[0] = f"przypisz {p[1]} {p[2]} {p[3]} {p[4]}"
+        else:
+            print(f"Błąd semantyczny: zmienna '{nazwa} nie została wcześniej zadeklarowana, linia: {p.lineno(2)}")
+            raise SyntaxError
+
     if len(p) == 8:
         p[0] = [p[3]] + ['jezeli', p[6]]
     if len(p) == 6:
@@ -141,6 +150,18 @@ def p_wyrazenie_calkowita_error(p):
         print(f"Błąd składni: po 'zmiennej' brakuje nazwy, linia: {p.lineno(1)}")
     sys.exit(1)
 
+def p_wyrazenie_id_error(p):
+    '''wyrazenie : ID PRZYPISANIE wyrazenie_arytmetyczne error
+                 | ID PRZYPISANIE error
+                 | ID error '''
+
+    if len(p) == 5:
+        print(f"Błąd składni: po 'zmiennej' brakuje srednika, linia: {p.lineno(1)}")
+    if len(p) == 4:
+        print(f"Błąd składni: po 'zmiennej' brakuje liczby, linia: {p.lineno(1)}")
+    if len(p) == 3:
+        print(f"Błąd składni: po 'zmiennej' brakuje operatora przypisania, linia: {p.lineno(1)}")
+    sys.exit(1)
 
 def p_epsilon(p):
     'epsilon :'
