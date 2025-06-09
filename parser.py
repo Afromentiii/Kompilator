@@ -71,6 +71,9 @@ def p_wyrazenie_arytmetyczne(p):
                               | wyrazenie_arytmetyczne DZIELENIE term
                               | term'''
     if len(p) == 2:
+        if isinstance(p[1], str) and "nie" in p[1]:
+            print(f"Błąd semantyczny: nie mozna uzywac slowa nie w wyrazeniach arytmetycznych, linia: {p.lineno(1)}")
+            sys.exit(1)
         p[0] = p[1]
     else:
         if p[2] == '/' and (p[3] == 0 or p[3] == '0'):
